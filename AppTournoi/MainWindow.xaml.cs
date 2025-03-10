@@ -70,6 +70,10 @@ namespace AppTournoi
                 );
 
                 MessageBox.Show("Connexion réussie !");
+
+                L_Tournois.ItemsSource = bdd.GetTournois();
+                L_Sports.ItemsSource = bdd.GetSport();
+                L_Participants.ItemsSource = bdd.GetParticipant();
             }
             catch (Exception ex)
             {

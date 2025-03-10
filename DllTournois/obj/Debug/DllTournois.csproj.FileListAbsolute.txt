@@ -34,3 +34,10 @@ C:\Users\Férault\Documents\Programation\SolutionTournois\DllTournois\obj\Debug\
 C:\Users\Férault\Documents\Programation\SolutionTournois\DllTournois\obj\Debug\DllTourn.4CFA5AB7.Up2Date
 C:\Users\Férault\Documents\Programation\SolutionTournois\DllTournois\obj\Debug\DllTournois.dll
 C:\Users\Férault\Documents\Programation\SolutionTournois\DllTournois\obj\Debug\DllTournois.pdb
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\DllTournois.dll
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\DllTournois.pdb
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.csproj.AssemblyReference.cache
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.csproj.CoreCompileInputs.cache
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTourn.4CFA5AB7.Up2Date
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.dll
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.pdb

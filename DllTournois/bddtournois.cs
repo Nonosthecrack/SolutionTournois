@@ -16,7 +16,7 @@ namespace DllTournois
         public Bddtournois(string adresse, string hote, string user, string mdp)
         {
 
-            chaineConnexion = $"server={hote};port={hote};user={user};password={mdp};";
+            chaineConnexion = $"server={adresse};port={hote};user={user};password={mdp};";
 
             MySqlConnection c = new MySqlConnection(chaineConnexion);
             try
@@ -30,6 +30,30 @@ namespace DllTournois
             finally
             {
                     c.Close();
+            }
+        }
+
+        public List<Tournoi> GetTournois()
+        {
+            using (BddtournoiDataContext context = new BddtournoiDataContext())
+            {
+                return context.Tournois.ToList();
+            }
+        }
+
+        public List<Participant> GetParticipant()
+        {
+            using (BddtournoiDataContext context = new BddtournoiDataContext())
+            {
+                return context.Participants.ToList();
+            }
+        }
+
+        public List<Sport> GetSport()
+        {
+            using (BddtournoiDataContext context = new BddtournoiDataContext())
+            {
+                return context.Sports.ToList();
             }
         }
 

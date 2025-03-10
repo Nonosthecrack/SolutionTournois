@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Férault\Documents\Programation\SolutionTournois\AppTournoi\obj\Debug\
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\
 AppTournoi
 none
 false
 DEBUG;TRACE
-C:\Users\Férault\Documents\Programation\SolutionTournois\AppTournoi\App.xaml
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\App.xaml
 3440026839
 
-81538172337
-15-1636595418
+7-674706341
+151605609078
 MainWindow.xaml;Window_connection_gestionnaire.xaml;Window_connection_bdd.xaml;
 
-True
+False
 
