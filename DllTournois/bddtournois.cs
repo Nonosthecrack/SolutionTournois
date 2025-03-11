@@ -1,4 +1,5 @@
 ﻿using BddtournoiContext;
+using Devart.Data.Linq;
 using Devart.Data.MySql;
 using System;
 using System.Collections.Generic;
@@ -33,31 +34,67 @@ namespace DllTournois
             }
         }
 
-        public List<Tournoi> GetTournois()
+        public IQueryable<Tournoi> GetTournois()
         {
-            try
-            {
-                return bdd.Tournois.ToList();
-            }
-            catch (Exception e) { throw; }
-
+            return bdd.Tournois;
         }
 
-        public List<Participant> GetParticipant()
+        public IQueryable<Tournoi> GetTournoisBySportName(string sportName)
         {
-            try
-            {
-                return bdd.Participants.ToList();
-            }
-            catch (Exception e) { throw; }
+            return bdd.Tournois.Where(t => t.Sport == this.GetSportByName(sportName).IdSport);
         }
 
-        public List<Sport> GetSport()
+        public Tournoi GetTournoiById(int id)
         {
-            try
-            {
-                return bdd.Sports.ToList();
-            }catch (Exception e) { throw; }
+            return bdd.Tournois.SingleOrDefault(t => t.IdTournoi == id);
+        }
+
+        public Tournoi GetTournoiByName(string name)
+        {
+            return bdd.Tournois.SingleOrDefault(t => t.Intitule == name);
+        }
+
+        public IQueryable<Sport> GetSport()
+        {
+            return bdd.Sports;
+        }
+
+        public Sport GetSportById(int id)
+        {
+            return bdd.Sports.SingleOrDefault(t => t.IdSport == id);
+        }
+
+        public Sport GetSportByName(string name)
+        {
+            return bdd.Sports.SingleOrDefault(t => t.Intitule == name);
+        }
+
+        public IQueryable<Participant> GetParticipant()
+        {
+            return bdd.Participants;
+        }
+
+        public IQueryable<Participant> GetAllParticipantsByTournoiName(string tournoiName)
+        {
+            return bdd.Participants.Where(t => t.Tournoi == this.GetTournoiByName(tournoiName).IdTournoi);
+        }
+
+        public Participant GetParticipantByIdentite(string identite)
+        {
+            string[] ident = identite.Split(' ');
+            string nom = ident[0];
+            string prenom = ident[1];
+            return bdd.Participants.SingleOrDefault(t => t.Prenom == prenom && t.Nom == nom);
+        }
+
+        public IQueryable<Participant> GetParticipantContainingPartName(string name)
+        {
+            return bdd.Participants.Where(p => p.Nom.ToUpper().Contains(name.ToUpper()));
+        }
+
+        public Participant GetParticipantById(int id)
+        {
+            return bdd.Participants.SingleOrDefault(t => t.Id == id);
         }
 
     }

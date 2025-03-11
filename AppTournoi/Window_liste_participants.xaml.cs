@@ -33,9 +33,11 @@ namespace AppTournoi
             this.Liste.ItemsSource = bdd.GetParticipant().ToList();
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (Recherche.Text != null && bdd != null) { 
+                Liste.ItemsSource = bdd.GetParticipant().Where(p => p.Nom.ToUpper().Contains(Recherche.Text.ToUpper())).ToList();
+            }
         }
     }
 }

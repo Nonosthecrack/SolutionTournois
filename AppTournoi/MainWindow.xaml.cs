@@ -30,6 +30,10 @@ namespace AppTournoi
             this.H_gestionParticipant.IsEnabled = false;
             this.H_gestionSport.IsEnabled = false;
             this.H_gestionTournois.IsEnabled = false;
+
+            this.L_Sports.SelectionChanged += L_Sports_SelectionChanged;
+            this.L_Tournois.SelectionChanged += L_Tournois_SelectionChanged;
+
         }
 
 
@@ -69,29 +73,24 @@ namespace AppTournoi
                 );
 
                 MessageBox.Show("Connexion Réussie");
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "La base marche pas fdp");
             }
 
-            try {
-                foreach (Tournoi tournoi in bdd.GetTournois())
-                {
-                    this.L_Tournois.Items.Add(tournoi.Intitule + " le " + tournoi.DateTournoi);
-                }
+            try
+            {
                 foreach (Sport sport in bdd.GetSport())
-                { 
-                     this.L_Sports.Items.Add(sport.Intitule);
-                }
-                foreach (Participant participant in bdd.GetParticipant())
                 {
-                    this.L_Participants.Items.Add(participant.Nom + " " + participant.Prenom);
+                    this.L_Sports.Items.Add(sport.Intitule);
                 }
             }
-            catch(Exception ex){
-                    MessageBox.Show(ex.Message + "\n La base est sans doute pas mal configurée");
-                }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n La base est sans doute pas mal configurée");
             }
+        }
         private void H_gestionnaire_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -99,12 +98,12 @@ namespace AppTournoi
                 Window_Connection_Gestionnaire Win_ges = new Window_Connection_Gestionnaire();
                 Win_ges.ShowDialog();
 
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de connexion du Gestionnaire");
             }
-            
+
         }
 
         private void H_liste_Click(object sender, RoutedEventArgs e)
@@ -118,7 +117,42 @@ namespace AppTournoi
             {
                 MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la liste des Participants");
             }
-            
+
+        }
+
+        private void L_Sports_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (L_Sports.SelectedItem != null && bdd !=null)
+            {
+                L_Tournois.Items.Clear();
+
+                var relatedTournois = bdd.GetTournoisBySportName(this.L_Sports.SelectedItem.ToString()).ToList();
+                relatedTournois.ForEach(item =>
+                {
+                    L_Tournois.Items.Add(item.Intitule);
+                });
+            }
+        }
+
+        private void L_Tournois_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (L_Tournois.SelectedItem != null)
+            {
+                string selectedTournoi = L_Tournois.SelectedItem.ToString();
+                try
+                {
+                    var participants = bdd.GetAllParticipantsByTournoiName(selectedTournoi);
+                    L_Participants.Items.Clear();
+                    foreach (var participant in participants)
+                    {
+                        L_Participants.Items.Add($"{participant.Prenom} {participant.Nom}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur lors de la récupération des participants");
+                }
+            }
         }
     }
 }

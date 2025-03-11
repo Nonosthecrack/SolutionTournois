@@ -7,11 +7,20 @@
         mc:Ignorable="d"
         Title="Window_liste_participants" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Margin="0,45,322,80" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False">
-        <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Grid.Row="1" Grid.Column="0" Margin="10" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
-                <DataGridTextColumn Header="Prénom" Binding="{Binding Prénom}"/>
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}"/>
                 <DataGridTemplateColumn Header="Photo">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -21,10 +30,13 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Sexe" Binding="{Binding Sexe}"/>
                 <DataGridTextColumn Header="Date de Naissance" Binding="{Binding DateNaissance}"/>
-                <DataGridTextColumn Header="Id Tournoi" Binding="{Binding tournoi}"/>
+                <DataGridTextColumn Header="Id Tournoi" Binding="{Binding Tournoi}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Nom du Participant" HorizontalAlignment="Left" Margin="576,74,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="576,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
+            <Label Content="Nom du Participant" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox x:Name="Recherche" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
+        </StackPanel>
     </Grid>
 </Window>
