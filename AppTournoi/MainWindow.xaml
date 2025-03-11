@@ -5,21 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTournoi"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="800">
-    <Grid>
+        Title="MainWindow" Height="500" Width="1000" MinHeight="450" MinWidth="800">
+    <Grid Background="DarkSeaGreen">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Height="30">
-            <MenuItem x:Name="H_bddConnexion" Header="Connexion BDD" Click="H_bddConnexion_Click" Height="30"/>
-            <MenuItem x:Name="H_liste" Header="Liste de tous les participants" Height="30" Click="H_liste_Click"/>
-            <MenuItem x:Name="H_gestionTournois" Header="Gestion : Tournois" Height="30"/>
-            <MenuItem x:Name="H_gestionSport" Header="Gestions : Sports" Height="30"/>
-            <MenuItem x:Name="H_gestionParticipant" Header="Gestion : Participants" Height="30" />
-            <MenuItem x:Name="H_gestionnaire" Header="Gestionnaire" Click="H_gestionnaire_Click" Height="30"/>
-            <MenuItem x:Name="H_parametres" Header="Paramètres BDD" Click="H_bddParam_Click" Height="30"/>
+        <Menu Grid.Row="0" Height="30" Background="DimGray">
+            <MenuItem x:Name="H_bddConnexion" Header="Connexion BDD" Click="H_bddConnexion_Click" Height="30" FontWeight="Black"/>
+            <MenuItem x:Name="H_liste" Header="Liste de tous les participants" Height="30" Click="H_liste_Click" FontWeight="Black"/>
+            <MenuItem x:Name="H_gestionTournois" Header="Gestion : Tournois" Height="30" FontWeight="Black"/>
+            <MenuItem x:Name="H_gestionSport" Header="Gestions : Sports" Height="30" FontWeight="Black"/>
+            <MenuItem x:Name="H_gestionParticipant" Header="Gestion : Participants" Height="30" FontWeight="Black"/>
+            <MenuItem x:Name="H_gestionnaire" Header="Gestionnaire" Click="H_gestionnaire_Click" Height="30" FontWeight="Black"/>
+            <MenuItem x:Name="H_parametres" Header="Paramètres BDD" Click="H_bddParam_Click" Height="30" FontWeight="Black"/>
         </Menu>
 
         <Grid Grid.Row="1" Margin="10">
@@ -30,9 +30,25 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Margin="10">
+            <StackPanel Grid.Column="0" Margin="10, 10, 10 , 50" Background="DarkOliveGreen">
+                <Label Content="Sports" FontWeight="Bold"/>
+                <ListView x:Name="L_Sports" Height="350" Background="Gray">
+                    <!--<ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock>
+                                    <Run Text="{Binding intitule}" FontWeight="Bold"/>
+                                    <Run Text="     "/>
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>-->
+                </ListView>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="10, 10, 10 , 50" Background="DarkOliveGreen">
                 <Label Content="Tournois" FontWeight="Bold"/>
-                <ListView x:Name="L_Tournois" Height="300">
+                <ListView x:Name="L_Tournois" Height="350" Background="Gray">
                     <!--<ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -47,25 +63,9 @@
                 </ListView>
             </StackPanel>
 
-            <StackPanel Grid.Column="1" Margin="10">
-                <Label Content="Sports" FontWeight="Bold"/>
-                <ListView x:Name="L_Sports" Height="300">
-                    <!--<ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock>
-                                    <Run Text="{Binding intitule}" FontWeight="Bold"/>
-                                    <Run Text="     "/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>-->
-                </ListView>
-            </StackPanel>
-
-            <StackPanel Grid.Column="2" Margin="10">
+            <StackPanel Grid.Column="2" Margin="10, 10, 10 , 50" Background="DarkOliveGreen">
                 <Label Content="Participants" FontWeight="Bold"/>
-                <ListView x:Name="L_Participants" Height="300">
+                <ListView x:Name="L_Participants" Height="350" Background="Gray">
                     <!--<ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -80,16 +80,16 @@
                 </ListView>
             </StackPanel>
 
-            <StackPanel Grid.Column="3" Margin="10">
-                <Label Content="Nom :"/>
+            <StackPanel Grid.Column="3" Margin="10" Background="DarkOliveGreen">
+                <Label Content="Nom :" FontWeight="Bold"/>
                 <TextBox x:Name="A_nom" Width="200"/>
-                <Label Content="Prénom :"/>
+                <Label Content="Prénom :" FontWeight="Bold"/>
                 <TextBox x:Name="A_prenom" Width="200"/>
-                <Label Content="Tournoi :"/>
+                <Label Content="Tournoi :" FontWeight="Bold"/>
                 <TextBox x:Name="A_tournoi" Width="200"/>
-                <Label Content="Sport :"/>
+                <Label Content="Sport :" FontWeight="Bold"/>
                 <TextBox x:Name="A_sport" Width="200"/>
-                <Label Content="Téléphone :"/>
+                <Label Content="Téléphone :" FontWeight="Bold"/>
                 <TextBox x:Name="A_telephone" Width="200"/>
             </StackPanel>
         </Grid>

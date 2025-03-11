@@ -71,12 +71,12 @@ namespace AppTournoi
                     Properties.Settings.Default.Utilisateur,
                     Properties.Settings.Default.mdp
                 );
-
+                H_bddConnexion.IsEnabled = false;
                 MessageBox.Show("Connexion Réussie");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "La base marche pas fdp");
+                MessageBox.Show(ex.Message + "La base marche pas");
             }
 
             try
@@ -136,22 +136,15 @@ namespace AppTournoi
 
         private void L_Tournois_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (L_Tournois.SelectedItem != null)
+            if (L_Tournois.SelectedItem != null && bdd != null)
             {
-                string selectedTournoi = L_Tournois.SelectedItem.ToString();
-                try
+                L_Participants.Items.Clear();
+
+                var relatedParticipant = bdd.GetAllParticipantsByTournoiName(this.L_Tournois.SelectedItem.ToString()).ToList();
+                relatedParticipant.ForEach(item =>
                 {
-                    var participants = bdd.GetAllParticipantsByTournoiName(selectedTournoi);
-                    L_Participants.Items.Clear();
-                    foreach (var participant in participants)
-                    {
-                        L_Participants.Items.Add($"{participant.Prenom} {participant.Nom}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Erreur lors de la récupération des participants");
-                }
+                    L_Participants.Items.Add($"{item.Nom} {item.Prenom}");
+                });
             }
         }
     }

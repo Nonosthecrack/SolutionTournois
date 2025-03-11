@@ -26,7 +26,7 @@ namespace DllTournois
             }
             catch (Exception e)
             {
-                throw new Exception("Échec de la connexion à la base de données."); 
+                throw new Exception(e.Message + "Échec de la connexion à la base de données."); 
             }
             finally
             {

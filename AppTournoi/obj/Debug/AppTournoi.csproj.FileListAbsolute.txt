@@ -151,3 +151,5 @@ Z:\S4\R4.01\SolutionTournois\AppTournoi\obj\Debug\AppTournoi.exe
 Z:\S4\R4.01\SolutionTournois\AppTournoi\obj\Debug\AppTournoi.pdb
 Z:\S4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_liste_participants.g.cs
 Z:\S4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_liste_participants.baml
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_liste_participants.g.cs
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_liste_participants.baml

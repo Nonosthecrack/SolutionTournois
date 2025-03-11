@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTournoi"
         mc:Ignorable="d"
-        Title="Window_connection_bdd" Height="450" Width="800">
-    <Grid>
-        <Label Content="Adresse IP BDD" HorizontalAlignment="Left" Margin="184,105,0,0" VerticalAlignment="Top" Width="137"/>
-        <Label Content="Port d'écoute de la BDD" HorizontalAlignment="Left" Margin="184,165,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nom d'utilisateur" HorizontalAlignment="Left" Margin="184,231,0,0" VerticalAlignment="Top" Width="137"/>
-        <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="184,288,0,0" VerticalAlignment="Top" Width="137"/>
+        Title="Window_connection_bdd" Height="450" Width="800" MinHeight="450" MinWidth="800">
+    <Grid Background="DarkSeaGreen">
+        <Label Content="Adresse IP BDD" HorizontalAlignment="Left" Margin="184,105,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold"/>
+        <Label Content="Port d'écoute de la BDD" HorizontalAlignment="Left" Margin="184,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Nom d'utilisateur" HorizontalAlignment="Left" Margin="184,231,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold"/>
+        <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="184,288,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold"/>
         <TextBox x:Name="C_BDD_Ip" HorizontalAlignment="Left" Margin="400,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="C_BDD_Port" HorizontalAlignment="Left" Margin="400,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="C_BDD_nom_utilisateur" HorizontalAlignment="Left" Margin="400,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <PasswordBox x:Name="C_BDD_mdp" HorizontalAlignment="Left" Margin="400,292,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Enregistrer" HorizontalAlignment="Left" Margin="197,342,0,0" VerticalAlignment="Top" Height="34" Width="77" Click="Button_save"/>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="431,342,0,0" VerticalAlignment="Top"  Height="34" Width="89" Click="Button_Click_quit"/>
+        <Button Content="Enregistrer" HorizontalAlignment="Left" Margin="197,342,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="Button_save" FontSize="18" FontWeight="Bold"/>
+        <Button Content="Annuler" HorizontalAlignment="Left" Margin="400,342,0,0" VerticalAlignment="Top"  Height="40" Width="120" Click="Button_Click_quit" FontSize="18" FontWeight="Bold"/>
     </Grid>
 </Window>
