@@ -1,0 +1,30 @@
+﻿<Window x:Class="AppTournoi.Window_liste_participants"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppTournoi"
+        mc:Ignorable="d"
+        Title="Window_liste_participants" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Margin="0,45,322,80" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False">
+        <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prénom}"/>
+                <DataGridTemplateColumn Header="Photo">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Photo}" Width="70" Height="50"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Sexe" Binding="{Binding Sexe}"/>
+                <DataGridTextColumn Header="Date de Naissance" Binding="{Binding DateNaissance}"/>
+                <DataGridTextColumn Header="Id Tournoi" Binding="{Binding tournoi}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Nom du Participant" HorizontalAlignment="Left" Margin="576,74,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="576,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>

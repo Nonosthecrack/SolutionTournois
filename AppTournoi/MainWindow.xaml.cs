@@ -59,7 +59,6 @@ namespace AppTournoi
 
         private void H_bddConnexion_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 bdd = new Bddtournois(
@@ -69,18 +68,30 @@ namespace AppTournoi
                     Properties.Settings.Default.mdp
                 );
 
-                MessageBox.Show("Connexion réussie !");
-
-                L_Tournois.ItemsSource = bdd.GetTournois();
-                L_Sports.ItemsSource = bdd.GetSport();
-                L_Participants.ItemsSource = bdd.GetParticipant();
-            }
-            catch (Exception ex)
+                MessageBox.Show("Connexion Réussie");
+            }catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur de connexion !", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message + "La base marche pas fdp");
             }
-        }
 
+            try {
+                foreach (Tournoi tournoi in bdd.GetTournois())
+                {
+                    this.L_Tournois.Items.Add(tournoi.Intitule + " le " + tournoi.DateTournoi);
+                }
+                foreach (Sport sport in bdd.GetSport())
+                { 
+                     this.L_Sports.Items.Add(sport.Intitule);
+                }
+                foreach (Participant participant in bdd.GetParticipant())
+                {
+                    this.L_Participants.Items.Add(participant.Nom + " " + participant.Prenom);
+                }
+            }
+            catch(Exception ex){
+                    MessageBox.Show(ex.Message + "\n La base est sans doute pas mal configurée");
+                }
+            }
         private void H_gestionnaire_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -92,6 +103,20 @@ namespace AppTournoi
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de connexion du Gestionnaire");
+            }
+            
+        }
+
+        private void H_liste_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Window_liste_participants window_Liste = new Window_liste_participants();
+                window_Liste.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la liste des Participants");
             }
             
         }

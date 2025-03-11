@@ -2,6 +2,7 @@
 using Devart.Data.MySql;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,8 @@ namespace DllTournois
 {
     public class Bddtournois
     {
-        private BddtournoiDataContext bdd = null;
-
-        private String chaineConnexion;
+        private BddtournoiDataContext bdd = new BddtournoiDataContext();
+        private string chaineConnexion;
         public Bddtournois(string adresse, string hote, string user, string mdp)
         {
 
@@ -29,32 +29,35 @@ namespace DllTournois
             }
             finally
             {
-                    c.Close();
+                c.Close();
             }
         }
 
         public List<Tournoi> GetTournois()
         {
-            using (BddtournoiDataContext context = new BddtournoiDataContext())
+            try
             {
-                return context.Tournois.ToList();
+                return bdd.Tournois.ToList();
             }
+            catch (Exception e) { throw; }
+
         }
 
         public List<Participant> GetParticipant()
         {
-            using (BddtournoiDataContext context = new BddtournoiDataContext())
+            try
             {
-                return context.Participants.ToList();
+                return bdd.Participants.ToList();
             }
+            catch (Exception e) { throw; }
         }
 
         public List<Sport> GetSport()
         {
-            using (BddtournoiDataContext context = new BddtournoiDataContext())
+            try
             {
-                return context.Sports.ToList();
-            }
+                return bdd.Sports.ToList();
+            }catch (Exception e) { throw; }
         }
 
     }
