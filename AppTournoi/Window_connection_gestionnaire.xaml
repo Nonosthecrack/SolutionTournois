@@ -3,16 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppTournoi"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="235,132,0,0" TextWrapping="Wrap" Text="Login Gestionnaire : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="186,217,0,0" TextWrapping="Wrap" Text="Mot de Passe du Gestionnaire : " VerticalAlignment="Top" Height="18"/>
-        <TextBox x:Name="G_Login" HorizontalAlignment="Left" Margin="418,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsReadOnly="False"/>
-        <PasswordBox x:Name="G_Password" HorizontalAlignment="Left" Margin="418,217,0,0" VerticalAlignment="Top" Width="120" />
-        <Button Content="Connexion" HorizontalAlignment="Left" Margin="188,325,0,0" VerticalAlignment="Top" Height="22" Width="165" Click="Button_save"/>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="450,325,0,0" VerticalAlignment="Top" Height="22" Width="165" Click="Button_quit"/>
+        Title="Connexion Gestionnaire" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="DarkSeaGreen">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Text="Login Gestionnaire :" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Center" Margin="10"/>
+        <TextBox x:Name="G_Login" Grid.Row="0" Grid.Column="1" Margin="10" Padding="5" Height="30" BorderThickness="1" BorderBrush="Gray"/>
+
+        <TextBlock Text="Mot de Passe du Gestionnaire :" Grid.Row="1" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Center" Margin="10"/>
+        <PasswordBox x:Name="G_Password" Grid.Row="1" Grid.Column="1" Margin="10" Padding="5" Height="30" BorderThickness="1" BorderBrush="Gray"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+            <Button Content="Connexion" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Margin="10" Cursor="Hand"/>
+            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222"  BorderThickness="0" Margin="10" Cursor="Hand"/>
+        </StackPanel>
     </Grid>
 </Window>

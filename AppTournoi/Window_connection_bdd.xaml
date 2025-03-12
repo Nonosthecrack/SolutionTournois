@@ -3,19 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppTournoi"
         mc:Ignorable="d"
-        Title="Window_connection_bdd" Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="Connexion à la BDD" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
-        <Label Content="Adresse IP BDD" HorizontalAlignment="Left" Margin="184,105,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold"/>
-        <Label Content="Port d'écoute de la BDD" HorizontalAlignment="Left" Margin="184,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Nom d'utilisateur" HorizontalAlignment="Left" Margin="184,231,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold"/>
-        <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="184,288,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold"/>
-        <TextBox x:Name="C_BDD_Ip" HorizontalAlignment="Left" Margin="400,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="C_BDD_Port" HorizontalAlignment="Left" Margin="400,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="C_BDD_nom_utilisateur" HorizontalAlignment="Left" Margin="400,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="C_BDD_mdp" HorizontalAlignment="Left" Margin="400,292,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Enregistrer" HorizontalAlignment="Left" Margin="197,342,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="Button_save" FontSize="18" FontWeight="Bold"/>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="400,342,0,0" VerticalAlignment="Top"  Height="40" Width="120" Click="Button_Click_quit" FontSize="18" FontWeight="Bold"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Adresse IP BDD" Grid.Row="0" Grid.Column="0" FontWeight="Bold"  VerticalAlignment="Center" Margin="10"/>
+        <TextBox x:Name="C_BDD_Ip" Grid.Row="0" Grid.Column="1" Margin="10" Padding="5" Height="30" BorderThickness="1" BorderBrush="Gray"/>
+
+        <Label Content="Port d'écoute de la BDD" Grid.Row="1" Grid.Column="0" FontWeight="Bold"   VerticalAlignment="Center" Margin="10"/>
+        <TextBox x:Name="C_BDD_Port" Grid.Row="1" Grid.Column="1" Margin="10" Padding="5" Height="30" BorderThickness="1" BorderBrush="Gray"/>
+
+        <Label Content="Nom d'utilisateur" Grid.Row="2" Grid.Column="0" FontWeight="Bold"   VerticalAlignment="Center" Margin="10"/>
+        <TextBox x:Name="C_BDD_nom_utilisateur" Grid.Row="2" Grid.Column="1" Margin="10" Padding="5" Height="30" BorderThickness="1" BorderBrush="Gray"/>
+
+        <Label Content="Mot de passe" Grid.Row="3" Grid.Column="0" FontWeight="Bold"   VerticalAlignment="Center" Margin="10"/>
+        <PasswordBox x:Name="C_BDD_mdp" Grid.Row="3" Grid.Column="1" Margin="10" Padding="5" Height="30" BorderThickness="1" BorderBrush="Gray"/>
+
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="260,70,0,20">
+            <Button Content="Enregistrer" Width="120" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4"   BorderThickness="0" Margin="10" Cursor="Hand"/>
+            <Button Content="Annuler" Width="120" Height="40" Click="Button_Click_quit" FontSize="16" FontWeight="Bold" Background="#B22222"   BorderThickness="0" Margin="10" Cursor="Hand"/>
+        </StackPanel>
     </Grid>
 </Window>
