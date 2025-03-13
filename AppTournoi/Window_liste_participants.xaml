@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTournoi"
         mc:Ignorable="d"
-        Title="Window_liste_participants"  Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="Window_liste_participants"  Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
     <Grid Background="DarkSeaGreen">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

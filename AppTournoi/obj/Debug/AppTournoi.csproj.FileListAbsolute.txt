@@ -161,3 +161,9 @@ Z:\Cours\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_pa
 Z:\Cours\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_sport.baml
 Z:\Cours\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_participant.g.cs
 Z:\Cours\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_sport.g.cs
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_participant.baml
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_sport.baml
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_tournoi.baml
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_participant.g.cs
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_sport.g.cs
+E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\Window_gestion_tournoi.g.cs

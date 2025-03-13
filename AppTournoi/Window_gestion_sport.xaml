@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau membre du personnel" MaxHeight="200" MaxWidth="425" MinHeight="200" MinWidth="425" Width="425" Height="200" WindowStartupLocation="CenterScreen">
+        Title="Ajout d'un nouveau membre du personnel" MaxHeight="200" MaxWidth="425" MinHeight="200" MinWidth="425" Width="425" Height="200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
