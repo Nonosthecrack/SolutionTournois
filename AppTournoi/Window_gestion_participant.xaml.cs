@@ -1,4 +1,5 @@
-﻿using DllTournois;
+﻿using BddtournoiContext;
+using DllTournois;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +17,15 @@ using System.Windows.Shapes;
 namespace AppTournoi
 {
     /// <summary>
-    /// Logique d'interaction pour Window1.xaml
+    /// Logique d'interaction pour Window_gestion_participant.xaml
     /// </summary>
-    public partial class Window_Connection_Gestionnaire : Window
+    public partial class Window_gestion_participant : Window
     {
         Bddtournois bdd = null;
-        public Window_Connection_Gestionnaire()
+
+        public Window_gestion_participant()
         {
             InitializeComponent();
-        }
-        private void Button_save(object sender, RoutedEventArgs e)
-        {
-
             try
             {
                 bdd = new Bddtournois(
@@ -42,29 +40,24 @@ namespace AppTournoi
             {
                 MessageBox.Show(ex.Message + "La base marche pas");
             }
-
-            Properties.Settings.Default.GesConnected = bdd.verifyLogin(this.G_Login.Text.ToString(), this.G_Password.Password.ToString());
-            if(Properties.Settings.Default.GesConnected)
+            foreach (Tournoi tournoi in bdd.GetTournois())
             {
-                MessageBox.Show("Connexion réussie");
-                MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-
-                if (mainWindow != null)
-                {
-                    mainWindow.H_gestionParticipant.IsEnabled = true;
-                    mainWindow.H_gestionSport.IsEnabled = true;
-                    mainWindow.H_gestionTournois.IsEnabled = true;
-                    this.Close();
-                }
-
+                this.Tournois.Items.Add(tournoi.Intitule);
             }
-            else
+        }
+
+        private void Button_save(object sender, RoutedEventArgs e)
+        {
+            Participant p = new Participant
             {
-                MessageBox.Show("Login ou mdp incorrect");
-            }
-
-
-
+                DateNaissance = I_DateNaissance.SelectedDate.Value,
+                Nom = this.I_Nom.Text,
+                Prenom = this.I_Prenom.Text,
+                Sexe = this.I_Sexe.Text,
+                Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi
+            };
+            bdd.AddParticipant(p);
+            this.Close();
         }
 
         private void Button_quit(object sender, RoutedEventArgs e)

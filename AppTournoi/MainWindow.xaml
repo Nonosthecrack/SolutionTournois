@@ -15,9 +15,9 @@
         <Menu Grid.Row="0" Height="30" Background="DimGray">
             <MenuItem x:Name="H_bddConnexion" Header="Connexion BDD" Click="H_bddConnexion_Click" Height="30" FontWeight="Black"/>
             <MenuItem x:Name="H_liste" Header="Liste de tous les participants" Height="30" Click="H_liste_Click" FontWeight="Black"/>
-            <MenuItem x:Name="H_gestionTournois" Header="Gestion : Tournois" Height="30" FontWeight="Black"/>
-            <MenuItem x:Name="H_gestionSport" Header="Gestions : Sports" Height="30" FontWeight="Black"/>
-            <MenuItem x:Name="H_gestionParticipant" Header="Gestion : Participants" Height="30" FontWeight="Black"/>
+            <MenuItem x:Name="H_gestionTournois" IsEnabled="{Binding GesConnected}" Header="Gestion : Tournois" Height="30" FontWeight="Black" Click="H_gestionTournois_Click"/>
+            <MenuItem x:Name="H_gestionSport" IsEnabled="{Binding GesConnected}" Header="Gestions : Sports" Height="30" FontWeight="Black" Click="H_gestionSport_Click"/>
+            <MenuItem x:Name="H_gestionParticipant" IsEnabled="{Binding GesConnected}" Header="Gestion : Participants" Height="30" FontWeight="Black" Click="H_gestionParticipant_Click"/>
             <MenuItem x:Name="H_gestionnaire" Header="Gestionnaire" Click="H_gestionnaire_Click" Height="30" FontWeight="Black"/>
             <MenuItem x:Name="H_parametres" Header="Paramètres BDD" Click="H_bddParam_Click" Height="30" FontWeight="Black"/>
         </Menu>
@@ -82,15 +82,15 @@
 
             <StackPanel Grid.Column="3" Margin="10" Background="DarkOliveGreen">
                 <Label Content="Nom :" FontWeight="Bold"/>
-                <TextBox x:Name="A_nom" Width="200"/>
+                <TextBox x:Name="A_nom" Width="auto" Margin="10" Height="25"/>
                 <Label Content="Prénom :" FontWeight="Bold"/>
-                <TextBox x:Name="A_prenom" Width="200"/>
+                <TextBox x:Name="A_prenom"  Width="auto" Margin="10" Height="25" />
                 <Label Content="Tournoi :" FontWeight="Bold"/>
-                <TextBox x:Name="A_tournoi" Width="200"/>
+                <TextBox x:Name="A_tournoi"  Width="auto" Margin="10" Height="25"/>
                 <Label Content="Sport :" FontWeight="Bold"/>
-                <TextBox x:Name="A_sport" Width="200"/>
+                <TextBox x:Name="A_sport"  Width="auto" Margin="10" Height="25"/>
                 <Label Content="Téléphone :" FontWeight="Bold"/>
-                <TextBox x:Name="A_telephone" Width="200"/>
+                <TextBox x:Name="A_telephone"  Width="auto" Margin="10" Height="25"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -120,6 +120,44 @@ namespace AppTournoi
 
         }
 
+        private void H_gestionTournois_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Window_gestion_tournoi window_tournois = new Window_gestion_tournoi();
+                window_tournois.ShowDialog();
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AAAAAAAAAAAAAAAAAAAAAAAAAA");
+            }
+        }
+
+        private void H_gestionSport_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Window_gestion_sport window_sport = new Window_gestion_sport();
+                window_sport.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la gestion des sports");
+            }
+        }
+
+        private void H_gestionParticipant_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Window_gestion_participant window_participant = new Window_gestion_participant();
+                window_participant.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la gestion desparticipant ");
+            }
+        }
+
         private void L_Sports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (L_Sports.SelectedItem != null && bdd !=null)

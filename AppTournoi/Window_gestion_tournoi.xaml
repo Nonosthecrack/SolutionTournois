@@ -1,0 +1,34 @@
+﻿<Window x:Name="gestion_participant" x:Class="AppTournoi.Window_gestion_tournoi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Ajout d'un nouveau membre du personnel" Height="300" Width="800" MaxHeight="300" MaxWidth="800" MinHeight="300" MinWidth="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="DarkSeaGreen">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="intitulé du tournoi" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
+        <TextBox x:Name="I_intitule"  Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
+
+        <Label Content="Date du tournoi" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
+        <DatePicker x:Name="I_Date" Grid.Row="1" Grid.Column="1" Width="auto" Height="30" Margin="10"/>
+
+        <TextBlock Text="Choisir un sport" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,20,10,5"/>
+        <ListBox x:Name="Sports" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Height="80" Width="400"/>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+            <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
+            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222"  BorderThickness="0" Margin="10" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Window>

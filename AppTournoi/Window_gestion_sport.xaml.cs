@@ -1,4 +1,5 @@
-﻿using DllTournois;
+﻿using BddtournoiContext;
+using DllTournois;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +17,16 @@ using System.Windows.Shapes;
 namespace AppTournoi
 {
     /// <summary>
-    /// Logique d'interaction pour Window1.xaml
+    /// Logique d'interaction pour Window_gestion_sport.xaml
     /// </summary>
-    public partial class Window_Connection_Gestionnaire : Window
+    public partial class Window_gestion_sport : Window
     {
         Bddtournois bdd = null;
-        public Window_Connection_Gestionnaire()
+        public Window_gestion_sport()
         {
             InitializeComponent();
         }
+
         private void Button_save(object sender, RoutedEventArgs e)
         {
 
@@ -43,27 +45,13 @@ namespace AppTournoi
                 MessageBox.Show(ex.Message + "La base marche pas");
             }
 
-            Properties.Settings.Default.GesConnected = bdd.verifyLogin(this.G_Login.Text.ToString(), this.G_Password.Password.ToString());
-            if(Properties.Settings.Default.GesConnected)
+            Sport s = new Sport
             {
-                MessageBox.Show("Connexion réussie");
-                MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                Intitule = this.I_Sport.Text
+            };
 
-                if (mainWindow != null)
-                {
-                    mainWindow.H_gestionParticipant.IsEnabled = true;
-                    mainWindow.H_gestionSport.IsEnabled = true;
-                    mainWindow.H_gestionTournois.IsEnabled = true;
-                    this.Close();
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Login ou mdp incorrect");
-            }
-
-
+            bdd.AddSport( s );
+            this.Close();
 
         }
 

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\
+Z:\Cours\Semestre4\R4.01\SolutionTournois\AppTournoi\obj\Debug\
 AppTournoi
 none
 false
 DEBUG;TRACE
-E:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\App.xaml
-4-764717460
+Z:\Cours\Semestre4\R4.01\SolutionTournois\AppTournoi\App.xaml
+7831910864
 
-893771122
-151605609078
-MainWindow.xaml;Window_connection_gestionnaire.xaml;Window_connection_bdd.xaml;Window_liste_participants.xaml;
+11985639114
+15-2127987737
+MainWindow.xaml;Window_connection_gestionnaire.xaml;Window_connection_bdd.xaml;Window_gestion_participant.xaml;Window_gestion_sport.xaml;Window_gestion_tournoi.xaml;Window_liste_participants.xaml;
 
 False
 

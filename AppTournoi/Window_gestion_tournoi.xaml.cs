@@ -1,4 +1,5 @@
-﻿using DllTournois;
+﻿using BddtournoiContext;
+using DllTournois;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +17,14 @@ using System.Windows.Shapes;
 namespace AppTournoi
 {
     /// <summary>
-    /// Logique d'interaction pour Window1.xaml
+    /// Logique d'interaction pour Window_gestion_tournoi.xaml
     /// </summary>
-    public partial class Window_Connection_Gestionnaire : Window
+    public partial class Window_gestion_tournoi : Window
     {
-        Bddtournois bdd = null;
-        public Window_Connection_Gestionnaire()
+        private Bddtournois bdd = null;
+        public Window_gestion_tournoi()
         {
             InitializeComponent();
-        }
-        private void Button_save(object sender, RoutedEventArgs e)
-        {
-
             try
             {
                 bdd = new Bddtournois(
@@ -36,33 +33,27 @@ namespace AppTournoi
                     Properties.Settings.Default.Utilisateur,
                     Properties.Settings.Default.mdp
                 );
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "La base marche pas");
             }
-
-            Properties.Settings.Default.GesConnected = bdd.verifyLogin(this.G_Login.Text.ToString(), this.G_Password.Password.ToString());
-            if(Properties.Settings.Default.GesConnected)
+            foreach (Sport sport in bdd.GetSport())
             {
-                MessageBox.Show("Connexion réussie");
-                MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-
-                if (mainWindow != null)
-                {
-                    mainWindow.H_gestionParticipant.IsEnabled = true;
-                    mainWindow.H_gestionSport.IsEnabled = true;
-                    mainWindow.H_gestionTournois.IsEnabled = true;
-                    this.Close();
-                }
-
+                this.Sports.Items.Add(sport.Intitule);
             }
-            else
+        }
+
+        private void Button_save(object sender, RoutedEventArgs e)
+        {
+            Tournoi t = new Tournoi
             {
-                MessageBox.Show("Login ou mdp incorrect");
-            }
-
+                Intitule = this.I_intitule.Text,
+                DateTournoi = this.I_Date.SelectedDate.Value,
+                Sport = bdd.GetSportByName(Sports.SelectedItem.ToString()).IdSport
+            };
+            bdd.AddTournoi(t);
+            this.Close();
 
 
         }
@@ -72,5 +63,7 @@ namespace AppTournoi
             this.DialogResult = false;
             this.Close();
         }
+
+
     }
 }

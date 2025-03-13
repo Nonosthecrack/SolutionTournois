@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DllTournois
 {
@@ -95,6 +96,32 @@ namespace DllTournois
         public Participant GetParticipantById(int id)
         {
             return bdd.Participants.SingleOrDefault(t => t.Id == id);
+        }
+
+
+        public bool verifyLogin(string login, string mdp)
+        {
+            Gestionnairesappli Login = bdd.Gestionnairesapplis.SingleOrDefault(l => l.Login.ToUpper().Equals(login));
+            Gestionnairesappli MotDePasse = bdd.Gestionnairesapplis.SingleOrDefault(m => m.MotDpass.ToUpper().Equals(mdp)); ;
+            return (Login != null && MotDePasse != null);
+        }
+
+        public void AddParticipant(Participant participant)
+        { 
+            bdd.Participants.InsertOnSubmit(participant);
+            bdd.SubmitChanges();
+        }
+
+        public void AddSport(Sport s)
+        {
+            bdd.Sports.InsertOnSubmit(s);
+            bdd.SubmitChanges();
+        }
+
+        public void AddTournoi(Tournoi t)
+        {
+            bdd.Tournois.InsertOnSubmit(t);
+            bdd.SubmitChanges();
         }
 
     }

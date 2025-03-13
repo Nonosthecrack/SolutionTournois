@@ -1,0 +1,47 @@
+﻿<Window x:Name="gestion_participant" x:Class="AppTournoi.Window_gestion_participant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Ajout d'un nouveau membre du personnel" MaxHeight="450" MaxWidth="800" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="DarkSeaGreen">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Nom" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
+        <TextBox x:Name="I_Nom" Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
+
+        <Label Content="Prénom" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
+        <TextBox x:Name="I_Prenom" Grid.Row="1" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
+
+        <Label Content="Sexe" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
+        <TextBox x:Name="I_Sexe" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
+
+        <Label Content="Date de Naissance" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
+        <DatePicker x:Name="I_DateNaissance" Grid.Row="3" Grid.Column="1" Width="auto" Height="30" Margin="10"/>
+
+        <Button Content="Choisir une photo" Grid.Row="3" Grid.Column="2" Width="150" Height="30" Margin="10"/>
+        <Image Source="/IconeUtilisateur.ico" Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Width="auto" Height="auto" Margin="10"/>
+
+        <TextBlock Text="Choisir un tournoi" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,20,10,5"/>
+        <ListBox x:Name="Tournois" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Height="80" Width="400"/>
+
+        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Margin="10" Cursor="Hand"/>
+            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222"  BorderThickness="0" Margin="10" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Window>
