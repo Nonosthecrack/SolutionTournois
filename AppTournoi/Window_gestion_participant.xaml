@@ -31,10 +31,11 @@
         <TextBox x:Name="I_Sexe" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
 
         <Label Content="Date de Naissance" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
-        <DatePicker x:Name="I_DateNaissance" Grid.Row="3" Grid.Column="1" Width="auto" Height="30" Margin="10"/>
+        <DatePicker x:Name="I_DateNaissance" Grid.Row="3" Grid.Column="1" Width="auto" Height="30" Margin="10,5,10,0"/>
 
-        <Button Content="Choisir une photo" Grid.Row="3" Grid.Column="2" Width="150" Height="30" Margin="10"/>
-        <Image Source="/IconeUtilisateur.ico" Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Width="auto" Height="auto" Margin="10"/>
+        <Button Content="Choisir une photo" Click="Button_ChoosePhoto_Click" Grid.Row="3" Grid.Column="2" Width="150" Height="30" Margin="10"/>
+        <Image x:Name="SelectedImage" Grid.Column="2" Width="100" Height="100" Margin="128,18,128,17" Grid.RowSpan="3"/>
+
 
         <TextBlock Text="Choisir un tournoi" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,20,10,5"/>
         <ListBox x:Name="Tournois" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Height="80" Width="400"/>

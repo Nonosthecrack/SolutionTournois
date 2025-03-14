@@ -62,9 +62,6 @@ namespace AppTournoi
             {
                 MessageBox.Show("Login ou mote de passe incorecte incorrect", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-
-
-
         }
 
         private void Button_quit(object sender, RoutedEventArgs e)

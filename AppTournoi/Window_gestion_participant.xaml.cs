@@ -1,7 +1,9 @@
 ﻿using BddtournoiContext;
 using DllTournois;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,12 +86,41 @@ namespace AppTournoi
                     Nom = this.I_Nom.Text,
                     Prenom = this.I_Prenom.Text,
                     Sexe = this.I_Sexe.Text,
-                    Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi
+                    Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi,
+                    Photo = ImageToByteArray((BitmapImage)SelectedImage.Source)
                 };
                 bdd.AddParticipant(p);
                 this.Close();
             }
         }
+
+
+        private void Button_ChoosePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string imagePath = openFileDialog.FileName;
+                BitmapImage bitmap = new BitmapImage(new Uri(imagePath));
+                SelectedImage.Source = bitmap;
+            }
+        }
+
+        private byte[] ImageToByteArray(BitmapImage bitmapImage)
+        {
+            byte[] data;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+            }
+            return data;
+        }
+
 
         private void Button_quit(object sender, RoutedEventArgs e)
         {
