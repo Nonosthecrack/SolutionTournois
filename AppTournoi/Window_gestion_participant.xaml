@@ -22,13 +22,13 @@
         </Grid.RowDefinitions>
 
         <Label Content="Nom" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Nom" Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
+        <TextBox x:Name="I_Nom" Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
 
         <Label Content="Prénom" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Prenom" Grid.Row="1" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
+        <TextBox x:Name="I_Prenom" Grid.Row="1" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
 
         <Label Content="Sexe" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Sexe" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10"/>
+        <TextBox x:Name="I_Sexe" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
 
         <Label Content="Date de Naissance" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
         <DatePicker x:Name="I_DateNaissance" Grid.Row="3" Grid.Column="1" Width="auto" Height="30" Margin="10,5,10,0"/>
