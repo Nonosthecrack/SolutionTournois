@@ -101,7 +101,7 @@ namespace AppTournoi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de connexion du Gestionnaire");
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de connexion du Gestionnaire", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }
@@ -115,7 +115,7 @@ namespace AppTournoi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la liste des Participants");
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la liste des Participants", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }
@@ -128,7 +128,7 @@ namespace AppTournoi
                 window_tournois.ShowDialog();
             }catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "AAAAAAAAAAAAAAAAAAAAAAAAAA");
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu gestion tournois", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -141,7 +141,7 @@ namespace AppTournoi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la gestion des sports");
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la gestion des sports", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -154,7 +154,7 @@ namespace AppTournoi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la gestion desparticipant ");
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la gestion des participant", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

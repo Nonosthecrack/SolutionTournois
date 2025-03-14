@@ -60,7 +60,7 @@ namespace AppTournoi
             }
             else
             {
-                MessageBox.Show("Login ou mdp incorrect");
+                MessageBox.Show("Login ou mote de passe incorecte incorrect", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
 

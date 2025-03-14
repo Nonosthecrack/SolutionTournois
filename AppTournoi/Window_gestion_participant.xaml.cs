@@ -46,18 +46,49 @@ namespace AppTournoi
             }
         }
 
+        private bool ValidateFields()
+        {
+            if (string.IsNullOrWhiteSpace(this.I_Nom.Text))
+            {
+                MessageBox.Show("Veuillez remplir le champ 'Nom'.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(this.I_Prenom.Text))
+            {
+                MessageBox.Show("Veuillez remplir le champ 'Prénom'.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (Tournois.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un tournoi.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!I_DateNaissance.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Veuillez sélectionner une date de naissance.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            return true;
+        }
+
         private void Button_save(object sender, RoutedEventArgs e)
         {
-            Participant p = new Participant
+            if (ValidateFields())
             {
-                DateNaissance = I_DateNaissance.SelectedDate.Value,
-                Nom = this.I_Nom.Text,
-                Prenom = this.I_Prenom.Text,
-                Sexe = this.I_Sexe.Text,
-                Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi
-            };
-            bdd.AddParticipant(p);
-            this.Close();
+                Participant p = new Participant
+                {
+                    DateNaissance = I_DateNaissance.SelectedDate.Value,
+                    Nom = this.I_Nom.Text,
+                    Prenom = this.I_Prenom.Text,
+                    Sexe = this.I_Sexe.Text,
+                    Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi
+                };
+                bdd.AddParticipant(p);
+                this.Close();
+            }
         }
 
         private void Button_quit(object sender, RoutedEventArgs e)

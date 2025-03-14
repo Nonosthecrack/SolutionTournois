@@ -25,11 +25,6 @@ namespace AppTournoi
         public Window_gestion_sport()
         {
             InitializeComponent();
-        }
-
-        private void Button_save(object sender, RoutedEventArgs e)
-        {
-
             try
             {
                 bdd = new Bddtournois(
@@ -44,15 +39,23 @@ namespace AppTournoi
             {
                 MessageBox.Show(ex.Message + "La base marche pas");
             }
+        }
 
-            Sport s = new Sport
+        private void Button_save(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.I_Sport.Text))
             {
-                Intitule = this.I_Sport.Text
-            };
-
-            bdd.AddSport( s );
-            this.Close();
-
+                MessageBox.Show("Veuiller remplir tous les champs obligatoire", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Sport s = new Sport
+                {
+                    Intitule = this.I_Sport.Text
+                };
+                bdd.AddSport(s);
+                this.Close();
+            }
         }
 
         private void Button_quit(object sender, RoutedEventArgs e)
