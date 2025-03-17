@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau membre du personnel" Width="800" Height="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Ajout d'un nouveau sport" Width="800" Height="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
         
 
@@ -28,7 +28,7 @@
         </DataGrid>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
-            <Label Content="Nom du tournoi" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+            <Label Content="Nom du Sport" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
             <TextBox x:Name="Recherche" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
         </StackPanel>
 

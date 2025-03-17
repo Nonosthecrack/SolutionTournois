@@ -4,45 +4,76 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau membre du personnel" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <Grid Background="DarkSeaGreen">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        Title="Ajout d'un nouveau participant" Height="500" Width="825" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Background="DarkSeaGreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="1.50*"/>
+                <ColumnDefinition Width="1.25*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <Label Content="Nom" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Nom" Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
+            <Grid Grid.Row="0" Grid.Column="0" MaxHeight="300">
+                <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Margin="10, 10, 10, 30" AutoGenerateColumns="False"
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                        <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}"/>
+                        <DataGridTemplateColumn Header="Photo">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Photo}" Width="70" Height="50"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Sexe" Binding="{Binding Sexe}"/>
+                        <DataGridTextColumn Header="Date de Naissance" Binding="{Binding DateNaissance}"/>
+                        <DataGridTextColumn Header="Id Tournoi" Binding="{Binding Tournoi}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
 
-        <Label Content="Prénom" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Prenom" Grid.Row="1" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
+                <Label Content="Nom du Participant" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBox x:Name="Recherche" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
 
-        <Label Content="Sexe" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Sexe" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
+            <Label Content="Ajouter d'un participant" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="20" Margin="10,20,20,10" HorizontalAlignment="Center"/>
 
-        <Label Content="Date de Naissance" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
-        <DatePicker x:Name="I_DateNaissance" Grid.Row="3" Grid.Column="1" Width="auto" Height="30" Margin="10,5,10,0"/>
+            <Label Content="Nom" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
+            <TextBox x:Name="I_Nom" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
-        <Button Content="Choisir une photo" Click="Button_ChoosePhoto_Click" Grid.Row="3" Grid.Column="2" Width="150" Height="30" Margin="10"/>
-        <Image x:Name="SelectedImage" Grid.Column="2" Width="100" Height="100" Margin="128,18,128,17" Grid.RowSpan="3"/>
+            <Label Content="Prénom" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
+            <TextBox x:Name="I_Prenom" Grid.Row="3" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
+            <Label Content="Sexe" Grid.Row="4" Grid.Column="0" FontWeight="Bold"/>
+            <TextBox x:Name="I_Sexe" Grid.Row="4" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
-        <TextBlock Text="Choisir un tournoi" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,20,10,5"/>
-        <ListBox x:Name="Tournois" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Height="80" Width="400"/>
+            <Label Content="Date de Naissance" Grid.Row="5" Grid.Column="0" FontWeight="Bold"/>
+            <DatePicker x:Name="I_DateNaissance" Grid.Row="5" Grid.Column="1" Width="auto" Height="30" Margin="10,5,10,0"/>
 
-        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Margin="10" Cursor="Hand"/>
-            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222"  BorderThickness="0" Margin="10" Cursor="Hand"/>
-        </StackPanel>
-    </Grid>
+            <Button Content="Choisir une photo" Click="Button_ChoosePhoto_Click" Grid.Row="3" Grid.Column="2" Width="150" Height="30" Margin="10"/>
+            <Image x:Name="SelectedImage" Grid.Column="2" Width="100" Height="100" Margin="128,18,128,17" Grid.RowSpan="3"/>
+
+            <TextBlock Text="Choisir un tournoi" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,20,10,5"/>
+            <ListBox x:Name="Tournois" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Height="80" Width="400"/>
+
+            <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Margin="10" Cursor="Hand"/>
+                <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222" BorderThickness="0" Margin="10" Cursor="Hand"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Window>

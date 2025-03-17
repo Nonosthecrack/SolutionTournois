@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTournoi"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000" MinHeight="450" MinWidth="800">
+        Title="Holy Tournois management" Height="500" Width="1000" MinHeight="450" MinWidth="800">
     <Grid Background="DarkSeaGreen">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

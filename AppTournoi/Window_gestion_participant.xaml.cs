@@ -36,6 +36,7 @@ namespace AppTournoi
                     Properties.Settings.Default.Utilisateur,
                     Properties.Settings.Default.mdp
                 );
+                this.Liste.ItemsSource = bdd.GetParticipant().ToList();
 
             }
             catch (Exception ex)
@@ -45,6 +46,14 @@ namespace AppTournoi
             foreach (Tournoi tournoi in bdd.GetTournois())
             {
                 this.Tournois.Items.Add(tournoi.Intitule + " " + tournoi.DateTournoi);
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Recherche.Text != null && bdd != null)
+            {
+                Liste.ItemsSource = bdd.GetParticipant().Where(p => p.Nom.ToUpper().Contains(Recherche.Text.ToUpper())).ToList();
             }
         }
 
@@ -80,29 +89,55 @@ namespace AppTournoi
         {
             if (ValidateFields())
             {
-                Participant p = new Participant
+                try
                 {
-                    DateNaissance = I_DateNaissance.SelectedDate.Value,
-                    Nom = this.I_Nom.Text,
-                    Prenom = this.I_Prenom.Text,
-                    Sexe = this.I_Sexe.Text,
-                    Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi,
-                    // /*photo obligatoire*/ Photo = ImageToByteArray((BitmapImage)SelectedImage.Source)
-                };
+                    // Vérifiez que l'objet bdd n'est pas null
+                    if (bdd == null)
+                    {
+                        MessageBox.Show("L'objet bdd est null. Assurez-vous que la connexion à la base de données est établie.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
 
-                //Photo non obligatoire
-                if (SelectedImage.Source != null)
-                {
-                    p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
+                    // Vérifiez que Tournois.SelectedItem n'est pas null
+                    if (Tournois.SelectedItem == null)
+                    {
+                        MessageBox.Show("Veuillez sélectionner un tournoi.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    Participant p = new Participant
+                    {
+                        DateNaissance = I_DateNaissance.SelectedDate.Value,
+                        Nom = this.I_Nom.Text,
+                        Prenom = this.I_Prenom.Text,
+                        Sexe = this.I_Sexe.Text,
+                        Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi
+                    };
+
+                    // Vérifiez si une image a été sélectionnée
+                    if (SelectedImage.Source != null)
+                    {
+                        p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
+                    }
+                    else
+                    {
+                        p.Photo = null;
+                    }
+
+                    // Ajoutez le participant à la base de données
+                    bdd.AddParticipant(p);
+
+                    // Fermez la fenêtre après l'ajout
+                    this.Close();
                 }
-                else
+                catch (NullReferenceException ex)
                 {
-                    p.Photo = null; 
+                    MessageBox.Show("Une erreur est survenue : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                bdd.AddParticipant(p);
-                this.Close();
             }
         }
+
+
 
 
         private void Button_ChoosePhoto_Click(object sender, RoutedEventArgs e)
