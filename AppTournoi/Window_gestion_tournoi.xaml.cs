@@ -25,66 +25,68 @@ namespace AppTournoi
         public Window_gestion_tournoi()
         {
             InitializeComponent();
-            try
-            {
-                bdd = new Bddtournois(
+            bdd = new Bddtournois(
                     Properties.Settings.Default.Adresse,
                     Properties.Settings.Default.Port,
                     Properties.Settings.Default.Utilisateur,
                     Properties.Settings.Default.mdp
                 );
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "La base marche pas");
-            }
+            this.Liste.ItemsSource = bdd.GetTournois().ToList();
             foreach (Sport sport in bdd.GetSport())
             {
                 this.Sports.Items.Add(sport.Intitule);
             }
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Recherche.Text != null && bdd != null)
+            {
+                Liste.ItemsSource = bdd.GetTournois().Where(p => p.Intitule.ToUpper().Contains(Recherche.Text.ToUpper())).ToList();
+            }
+        }
+
         private bool ValidateFiels()
-        {
-            if (string.IsNullOrWhiteSpace(this.I_intitule.Text))
-            {
-                MessageBox.Show("Veuillez remplir le champ 'intitule'.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
+         {
+             if (string.IsNullOrWhiteSpace(this.I_intitule.Text))
+             {
+                 MessageBox.Show("Veuillez remplir le champ 'intitule'.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                 return false;
+             }
 
-            if(!I_Date.SelectedDate.HasValue)
-            {
-                MessageBox.Show("Veuillez sélectionner une date de tournoi.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            if (Sports.SelectedItem == null)
-            {
-                MessageBox.Show("Veuillez sélectionner un sport.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
+             if(!I_Date.SelectedDate.HasValue)
+             {
+                 MessageBox.Show("Veuillez sélectionner une date de tournoi.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                 return false;
+             }
+             if (Sports.SelectedItem == null)
+             {
+                 MessageBox.Show("Veuillez sélectionner un sport.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                 return false;
+             }
 
-            return true;
-        }
+             return true;
+         }
 
-        private void Button_save(object sender, RoutedEventArgs e)
-        {
-            if (ValidateFiels())
-            {
-                Tournoi t = new Tournoi
-                {
-                    Intitule = this.I_intitule.Text,
-                    DateTournoi = this.I_Date.SelectedDate.Value,
-                    Sport = bdd.GetSportByName(Sports.SelectedItem.ToString()).IdSport
-                };
-                bdd.AddTournoi(t);
-                this.Close();
-            }
-        }
+         private void Button_save(object sender, RoutedEventArgs e)
+         {
+             if (ValidateFiels())
+             {
+                 Tournoi t = new Tournoi
+                 {
+                     Intitule = this.I_intitule.Text,
+                     DateTournoi = this.I_Date.SelectedDate.Value,
+                     Sport = bdd.GetSportByName(Sports.SelectedItem.ToString()).IdSport
+                 };
+                 bdd.AddTournoi(t);
+                 this.Close();
+             }
+         }
 
-        private void Button_quit(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
-        }
+         private void Button_quit(object sender, RoutedEventArgs e)
+         {
+             this.DialogResult = false;
+             this.Close();
+         }
     }
 }

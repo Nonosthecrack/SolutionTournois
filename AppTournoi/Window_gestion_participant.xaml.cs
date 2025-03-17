@@ -44,7 +44,7 @@ namespace AppTournoi
             }
             foreach (Tournoi tournoi in bdd.GetTournois())
             {
-                this.Tournois.Items.Add(tournoi.Intitule);
+                this.Tournois.Items.Add(tournoi.Intitule + " " + tournoi.DateTournoi);
             }
         }
 

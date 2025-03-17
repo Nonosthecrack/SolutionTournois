@@ -4,31 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau membre du personnel" Height="300" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Ajout d'un nouveau tournoi" Height="600" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Label Content="intitulé du tournoi" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_intitule"  Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
+        <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Grid.Row="0" Grid.Column="0" Margin="10" AutoGenerateColumns="false">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding IdTournoi}"/>
+                <DataGridTextColumn Header="Intitule" Binding="{Binding Intitule}"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding DateTournoi}"/>
+                <DataGridTextColumn Header="Id Sport" Binding="{Binding Sport}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <Label Content="Date du tournoi" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
-        <DatePicker x:Name="I_Date" Grid.Row="1" Grid.Column="1" Width="auto" Height="30" Margin="10"/>
-
-        <TextBlock Text="Choisir un sport" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,20,10,5"/>
-        <ListBox x:Name="Sports" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Height="80" Width="400"/>
-
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-            <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
-            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222"  BorderThickness="0" Margin="10" Cursor="Hand"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
+            <Label Content="Nom du tournoi" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+            <TextBox x:Name="Recherche" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
         </StackPanel>
+
+        <Label Content="Ajouter un tournoi" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" Margin="10,20,10,10" HorizontalAlignment="Center"/>
+
+        <Label Content="Intitulé du tournoi" Grid.Row="2" Grid.Column="0" FontWeight="Bold" Margin="10,0,10,5"/>
+        <TextBox x:Name="I_intitule" Grid.Row="2" Grid.Column="1" Height="25" Margin="10,0,10,5" Padding="2.5"/>
+
+        <Label Content="Date du tournoi" Grid.Row="3" Grid.Column="0" FontWeight="Bold" Margin="10,0,10,5"/>
+        <DatePicker x:Name="I_Date" Grid.Row="3" Grid.Column="1" Height="30" Margin="10,0,10,5"/>
+
+        <Label Content="Choisir un sport" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,5,10,5"/>
+        <ListBox x:Name="Sports" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Height="80" Margin="10,0,10,5"/>
+
+        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0">
+            <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
+            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222" BorderThickness="0" Margin="10,0,0,0" Cursor="Hand"/>
+        </StackPanel>
+
     </Grid>
 </Window>
