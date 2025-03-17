@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau membre du personnel" Height="300" Width="800" MaxHeight="300" MaxWidth="800" MinHeight="300" MinWidth="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Ajout d'un nouveau membre du personnel" Height="300" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Label Content="intitulé du tournoi" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_intitule"  Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
+        <TextBox x:Name="I_intitule"  Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
         <Label Content="Date du tournoi" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
         <DatePicker x:Name="I_Date" Grid.Row="1" Grid.Column="1" Width="auto" Height="30" Margin="10"/>

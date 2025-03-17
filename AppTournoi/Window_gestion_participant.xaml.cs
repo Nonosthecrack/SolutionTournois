@@ -87,8 +87,18 @@ namespace AppTournoi
                     Prenom = this.I_Prenom.Text,
                     Sexe = this.I_Sexe.Text,
                     Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi,
-                    Photo = ImageToByteArray((BitmapImage)SelectedImage.Source)
+                    // /*photo obligatoire*/ Photo = ImageToByteArray((BitmapImage)SelectedImage.Source)
                 };
+
+                //Photo non obligatoire
+                if (SelectedImage.Source != null)
+                {
+                    p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
+                }
+                else
+                {
+                    p.Photo = null; 
+                }
                 bdd.AddParticipant(p);
                 this.Close();
             }

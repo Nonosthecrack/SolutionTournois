@@ -137,11 +137,26 @@ namespace AppTournoi
             try
             {
                 Window_gestion_sport window_sport = new Window_gestion_sport();
+                window_sport.SportAdded += Window_sport_SportAdded;
                 window_sport.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de la gestion des sports", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void Window_sport_SportAdded(object sender, EventArgs e)
+        {
+            LoadSports();
+        }
+
+        private void LoadSports()
+        {
+            L_Sports.Items.Clear();
+            foreach (Sport sport in bdd.GetSport())
+            {
+                this.L_Sports.Items.Add(sport.Intitule);
             }
         }
 

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau membre du personnel" MaxHeight="450" MaxWidth="800" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Ajout d'un nouveau membre du personnel" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -22,13 +22,13 @@
         </Grid.RowDefinitions>
 
         <Label Content="Nom" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Nom" Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
+        <TextBox x:Name="I_Nom" Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
         <Label Content="Prénom" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Prenom" Grid.Row="1" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
+        <TextBox x:Name="I_Prenom" Grid.Row="1" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
         <Label Content="Sexe" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
-        <TextBox x:Name="I_Sexe" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
+        <TextBox x:Name="I_Sexe" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
         <Label Content="Date de Naissance" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
         <DatePicker x:Name="I_DateNaissance" Grid.Row="3" Grid.Column="1" Width="auto" Height="30" Margin="10,5,10,0"/>

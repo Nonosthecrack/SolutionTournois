@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau membre du personnel" MaxHeight="200" MaxWidth="425" MinHeight="200" MinWidth="425" Width="425" Height="200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Ajout d'un nouveau membre du personnel" Width="425" Height="200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Label Content="Intitulé du Sport" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Width="110" Height="25"/>
-        <TextBox x:Name="I_Sport"  Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="5"/>
+        <TextBox x:Name="I_Sport"  Grid.Row="0" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="50">
             <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Margin="10" Cursor="Hand"/>

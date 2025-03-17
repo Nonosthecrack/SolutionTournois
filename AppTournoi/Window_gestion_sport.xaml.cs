@@ -21,6 +21,7 @@ namespace AppTournoi
     /// </summary>
     public partial class Window_gestion_sport : Window
     {
+        public event EventHandler SportAdded;
         Bddtournois bdd = null;
         public Window_gestion_sport()
         {
@@ -54,6 +55,7 @@ namespace AppTournoi
                     Intitule = this.I_Sport.Text
                 };
                 bdd.AddSport(s);
+                SportAdded?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }
         }
