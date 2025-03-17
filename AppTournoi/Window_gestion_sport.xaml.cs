@@ -34,11 +34,19 @@ namespace AppTournoi
                     Properties.Settings.Default.Utilisateur,
                     Properties.Settings.Default.mdp
                 );
-
+                this.Liste.ItemsSource = bdd.GetSport().ToList();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "La base marche pas");
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Recherche.Text != null && bdd != null)
+            {
+                Liste.ItemsSource = bdd.GetSport().Where(p => p.Intitule.ToUpper().Contains(Recherche.Text.ToUpper())).ToList();
             }
         }
 
