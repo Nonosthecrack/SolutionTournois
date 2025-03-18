@@ -1,4 +1,5 @@
-﻿using DllTournois;
+﻿using BddtournoiContext;
+using DllTournois;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,6 @@ namespace AppTournoi
         public Window_Connection_Gestionnaire()
         {
             InitializeComponent();
-        }
-        private void Button_save(object sender, RoutedEventArgs e)
-        {
 
             try
             {
@@ -42,8 +40,11 @@ namespace AppTournoi
             {
                 MessageBox.Show(ex.Message + "La base marche pas");
             }
+        }
+        private void Button_save(object sender, RoutedEventArgs e)
+        {
 
-            Properties.Settings.Default.GesConnected = bdd.verifyLogin(this.G_Login.Text.ToString(), this.G_Password.Password.ToString());
+            Properties.Settings.Default.GesConnected = bdd.verifyLogin(this.G_Login.Text.ToString(), this.G_Password.Password.ToString()); //base de sonnée = ce qu'on rentre dans les champs
             if(Properties.Settings.Default.GesConnected)
             {
                 MessageBox.Show("Connexion réussie");
@@ -51,9 +52,15 @@ namespace AppTournoi
 
                 if (mainWindow != null)
                 {
+                    mainWindow.L_Sports.Items.Clear();
+                    foreach (Sport sport in bdd.GetSport())
+                    {
+                        mainWindow.L_Sports.Items.Add(sport.Intitule);
+                    }
                     mainWindow.H_gestionParticipant.IsEnabled = true;
                     mainWindow.H_gestionSport.IsEnabled = true;
                     mainWindow.H_gestionTournois.IsEnabled = true;
+                    mainWindow.H_bddConnexion.IsEnabled = false;
                     this.Close();
                 }
 

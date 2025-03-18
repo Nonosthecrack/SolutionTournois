@@ -26,20 +26,13 @@ namespace AppTournoi
         public Window_gestion_sport()
         {
             InitializeComponent();
-            try
-            {
-                bdd = new Bddtournois(
-                    Properties.Settings.Default.Adresse,
-                    Properties.Settings.Default.Port,
-                    Properties.Settings.Default.Utilisateur,
-                    Properties.Settings.Default.mdp
-                );
-                this.Liste.ItemsSource = bdd.GetSport().ToList();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "La base marche pas");
-            }
+            bdd = new Bddtournois(
+                Properties.Settings.Default.Adresse,
+                Properties.Settings.Default.Port,
+                Properties.Settings.Default.Utilisateur,
+                Properties.Settings.Default.mdp
+            );
+            this.Liste.ItemsSource = bdd.GetSport().ToList();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,22 +43,27 @@ namespace AppTournoi
             }
         }
 
-        private void Button_save(object sender, RoutedEventArgs e)
+        private bool ValidateFiels()
         {
             if (string.IsNullOrWhiteSpace(this.I_Sport.Text))
             {
-                MessageBox.Show("Veuiller remplir tous les champs obligatoire", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Veuillez remplir tous les champs obligatoires", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
-            else
+            return true;
+        }
+        private void Button_save(object sender, RoutedEventArgs e)
+        {
+            if (ValidateFiels())
             {
                 Sport s = new Sport
-                {
-                    Intitule = this.I_Sport.Text
-                };
-                bdd.AddSport(s);
-                SportAdded?.Invoke(this, EventArgs.Empty);
-                this.Close();
-            }
+                    {
+                        Intitule = this.I_Sport.Text
+                    };
+                    bdd.AddSport(s);
+                    SportAdded?.Invoke(this, EventArgs.Empty);
+                    this.Close();
+                }
         }
 
         private void Button_quit(object sender, RoutedEventArgs e)

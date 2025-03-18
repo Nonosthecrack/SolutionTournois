@@ -91,14 +91,11 @@ namespace AppTournoi
             {
                 try
                 {
-                    // Vérifiez que l'objet bdd n'est pas null
                     if (bdd == null)
                     {
                         MessageBox.Show("L'objet bdd est null. Assurez-vous que la connexion à la base de données est établie.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
-
-                    // Vérifiez que Tournois.SelectedItem n'est pas null
                     if (Tournois.SelectedItem == null)
                     {
                         MessageBox.Show("Veuillez sélectionner un tournoi.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -114,7 +111,7 @@ namespace AppTournoi
                         Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi
                     };
 
-                    // Vérifiez si une image a été sélectionnée
+
                     if (SelectedImage.Source != null)
                     {
                         p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
@@ -123,11 +120,7 @@ namespace AppTournoi
                     {
                         p.Photo = null;
                     }
-
-                    // Ajoutez le participant à la base de données
                     bdd.AddParticipant(p);
-
-                    // Fermez la fenêtre après l'ajout
                     this.Close();
                 }
                 catch (NullReferenceException ex)

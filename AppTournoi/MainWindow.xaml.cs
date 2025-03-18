@@ -175,9 +175,10 @@ namespace AppTournoi
 
         private void L_Sports_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (L_Sports.SelectedItem != null && bdd !=null)
+            if (L_Sports.SelectedItem != null && bdd != null)
             {
                 L_Tournois.Items.Clear();
+                L_Participants.Items.Clear();
 
                 var relatedTournois = bdd.GetTournoisBySportName(this.L_Sports.SelectedItem.ToString()).ToList();
                 relatedTournois.ForEach(item =>

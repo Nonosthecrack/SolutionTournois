@@ -4,42 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau sport" Width="800" Height="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Ajout d'un nouveau sport" Width="800" Height="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
-        
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
+            <Grid Grid.Row="0" Grid.Column="0" MaxHeight="150">
+                <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Margin="10, 10, 10, 30" AutoGenerateColumns="false"
+                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Intitule" Binding="{Binding Intitule}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
 
-        <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Grid.Row="0" Grid.Column="0" Margin="10" AutoGenerateColumns="false">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Intitule" Binding="{Binding Intitule}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
+                <Label Content="Nom du Sport" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+                <TextBox x:Name="Recherche" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Padding="5" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
-            <Label Content="Nom du Sport" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
-            <TextBox x:Name="Recherche" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
-        </StackPanel>
+            <Label Content="Ajouter un sport" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" Margin="10,20,20,10" HorizontalAlignment="Center"/>
 
-        <Label Content="Ajouter un sport" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" Margin="10,20,20,10" HorizontalAlignment="Center"/>
+            <Label Content="Intitulé du Sport:" Grid.Row="2" Grid.Column="0" FontWeight="Bold" Width="110" Height="25"/>
+            <TextBox x:Name="I_Sport"  Grid.Row="2" Grid.Column="1" Width="auto" Height="30" Margin="10" Padding="5"/>
 
-        <Label Content="Intitulé du Sport" Grid.Row="2" Grid.Column="0" FontWeight="Bold" Width="110" Height="25"/>
-        <TextBox x:Name="I_Sport"  Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
-
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0">
-            <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
-            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222" BorderThickness="0" Margin="10,0,0,0" Cursor="Hand"/>
-        </StackPanel>
-    </Grid>
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0">
+                <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
+                <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222" BorderThickness="0" Margin="10,0,0,0" Cursor="Hand"/>
+            </StackPanel>
+        </Grid>
 </Window>

@@ -36,7 +36,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
             <Label Content="Nom du Participant" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-            <TextBox x:Name="Recherche" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="20" Margin="10,0,10,0" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
+            <TextBox x:Name="Recherche" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="25" Margin="10,0,10,0" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
         </StackPanel>
     </Grid>
 </Window>
