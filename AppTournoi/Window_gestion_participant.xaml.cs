@@ -23,30 +23,24 @@ namespace AppTournoi
     /// </summary>
     public partial class Window_gestion_participant : Window
     {
-        Bddtournois bdd = null;
+        private Bddtournois bdd = null;
 
         public Window_gestion_participant()
         {
             InitializeComponent();
-            try
-            {
                 bdd = new Bddtournois(
                     Properties.Settings.Default.Adresse,
                     Properties.Settings.Default.Port,
                     Properties.Settings.Default.Utilisateur,
                     Properties.Settings.Default.mdp
                 );
-                this.Liste.ItemsSource = bdd.GetParticipant().ToList();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "La base marche pas");
-            }
+            this.Liste.ItemsSource = bdd.GetParticipant().ToList();
             foreach (Tournoi tournoi in bdd.GetTournois())
             {
-                this.Tournois.Items.Add(tournoi.Intitule + " " + tournoi.DateTournoi);
+                // Ajouter le nom et la date avec un séparateur
+                this.Tournois.Items.Add($"{tournoi.Intitule};{tournoi.DateTournoi}");
             }
+       
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -89,49 +83,31 @@ namespace AppTournoi
         {
             if (ValidateFields())
             {
-                try
+                string selectedItemText = Tournois.SelectedItem.ToString();
+                string selectedTournoiName = selectedItemText.Split(';')[0];
+                var selectedTournoi = bdd.GetTournoiByName(selectedTournoiName);
+
+                Participant p = new Participant
                 {
-                    if (bdd == null)
-                    {
-                        MessageBox.Show("L'objet bdd est null. Assurez-vous que la connexion à la base de données est établie.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                    if (Tournois.SelectedItem == null)
-                    {
-                        MessageBox.Show("Veuillez sélectionner un tournoi.", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
-
-                    Participant p = new Participant
-                    {
-                        DateNaissance = I_DateNaissance.SelectedDate.Value,
-                        Nom = this.I_Nom.Text,
-                        Prenom = this.I_Prenom.Text,
-                        Sexe = this.I_Sexe.Text,
-                        Tournoi = bdd.GetTournoiByName(Tournois.SelectedItem.ToString()).IdTournoi
-                    };
-
-
-                    if (SelectedImage.Source != null)
-                    {
-                        p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
-                    }
-                    else
-                    {
-                        p.Photo = null;
-                    }
-                    bdd.AddParticipant(p);
-                    this.Close();
-                }
-                catch (NullReferenceException ex)
+                    DateNaissance = this.I_DateNaissance.SelectedDate.Value,
+                    Nom = this.I_Nom.Text,
+                    Prenom = this.I_Prenom.Text,
+                    Sexe = this.I_Sexe.Text,
+                    Tournoi = selectedTournoi.IdTournoi,
+                    //Photo = ImageToByteArray((BitmapImage)SelectedImage.Source)
+                };
+                if (SelectedImage.Source != null)
                 {
-                    MessageBox.Show("Une erreur est survenue : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
                 }
-            }
+                else
+                {
+                    p.Photo = null; 
+                }
+                bdd.AddParticipant(p);
+                this.Close();
+                }
         }
-
-
-
 
         private void Button_ChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
