@@ -34,64 +34,32 @@
             <StackPanel Grid.Column="0" Margin="10, 10, 10 , 50" Background="DarkOliveGreen">
                 <Label Content="Sports" FontWeight="Bold"/>
                 <ListView x:Name="L_Sports" Height="350" Background="Gray">
-                    <!--<ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock>
-                                    <Run Text="{Binding intitule}" FontWeight="Bold"/>
-                                    <Run Text="     "/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>-->
                 </ListView>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="10, 10, 10 , 50" Background="DarkOliveGreen">
                 <Label Content="Tournois" FontWeight="Bold"/>
                 <ListView x:Name="L_Tournois" Height="350" Background="Gray">
-                    <!--<ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock>
-                                        <Run Text="{Binding intitule}" FontWeight="Bold"/>
-                                        <Run Text="     "/>
-                                        <Run Text="{Binding date}" FontWeight="Bold"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>-->
                 </ListView>
             </StackPanel>
 
             <StackPanel Grid.Column="2" Margin="10, 10, 10 , 50" Background="DarkOliveGreen">
                 <Label Content="Participants" FontWeight="Bold"/>
                 <ListView x:Name="L_Participants" Height="350" Background="Gray">
-                    <!--<ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock>
-                                    <Run Text="{Binding prenom}" FontWeight="Bold"/>
-                                    <Run Text="     "/>
-                                    <Run Text="{Binding nom}" FontWeight="Bold"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>-->
                 </ListView>
             </StackPanel>
 
             <StackPanel Grid.Column="3" Margin="10" Background="DarkOliveGreen">
                 <Label Content="Nom :" FontWeight="Bold"/>
-                <TextBox x:Name="A_nom" Width="auto" Margin="10" Height="25"/>
+                <TextBox x:Name="A_nom" Width="auto" Margin="10" Height="25" Padding="2.5"/>
                 <Label Content="Prénom :" FontWeight="Bold"/>
-                <TextBox x:Name="A_prenom"  Width="auto" Margin="10" Height="25" />
+                <TextBox x:Name="A_prenom"  Width="auto" Margin="10" Height="25" Padding="2.5"/>
                 <Label Content="Tournoi :" FontWeight="Bold"/>
-                <TextBox x:Name="A_tournoi"  Width="auto" Margin="10" Height="25"/>
+                <TextBox x:Name="A_tournoi"  Width="auto" Margin="10" Height="25" Padding="2.5"/>
                 <Label Content="Sport :" FontWeight="Bold"/>
-                <TextBox x:Name="A_sport"  Width="auto" Margin="10" Height="25"/>
+                <TextBox x:Name="A_sport"  Width="auto" Margin="10" Height="25" Padding="2.5"/>
                 <Label Content="Téléphone :" FontWeight="Bold"/>
-                <TextBox x:Name="A_telephone"  Width="auto" Margin="10" Height="25"/>
+                <TextBox x:Name="A_telephone"  Width="auto" Margin="10" Height="25" Padding="2.5"/>
             </StackPanel>
         </Grid>
     </Grid>
