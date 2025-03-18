@@ -30,6 +30,7 @@ namespace AppTournoi
             this.H_gestionParticipant.IsEnabled = false;
             this.H_gestionSport.IsEnabled = false;
             this.H_gestionTournois.IsEnabled = false;
+            this.H_gestionGestionnaire.IsEnabled = false;
 
             this.L_Sports.SelectionChanged += L_Sports_SelectionChanged;
             this.L_Tournois.SelectionChanged += L_Tournois_SelectionChanged;
@@ -203,5 +204,18 @@ namespace AppTournoi
             }
         }
 
+        private void H_gestionGestionnaire_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Window_gestion_gestionnaire Win_ges = new Window_gestion_gestionnaire();
+                Win_ges.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de connexion du Gestionnaire", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }

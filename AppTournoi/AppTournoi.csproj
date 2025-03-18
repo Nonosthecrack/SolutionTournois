@@ -62,6 +62,9 @@
     <Compile Include="Window_connection_bdd.xaml.cs">
       <DependentUpon>Window_connection_bdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window_gestion_gestionnaire.xaml.cs">
+      <DependentUpon>Window_gestion_gestionnaire.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window_gestion_participant.xaml.cs">
       <DependentUpon>Window_gestion_participant.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window_connection_bdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_gestion_gestionnaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -52,22 +52,22 @@
 
             <Label Content="Ajouter d'un participant" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="20" Margin="10,20,20,10" HorizontalAlignment="Center"/>
 
-            <Label Content="Nom" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
+            <Label Content="Nom" Grid.Row="2" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
             <TextBox x:Name="I_Nom" Grid.Row="2" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
-            <Label Content="Prénom" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
+            <Label Content="Prénom" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
             <TextBox x:Name="I_Prenom" Grid.Row="3" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
-            <Label Content="Sexe" Grid.Row="4" Grid.Column="0" FontWeight="Bold"/>
+            <Label Content="Sexe" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
             <TextBox x:Name="I_Sexe" Grid.Row="4" Grid.Column="1" Width="auto" Height="25" Margin="10" Padding="2.5"/>
 
-            <Label Content="Date de Naissance" Grid.Row="5" Grid.Column="0" FontWeight="Bold"/>
+            <Label Content="Date de Naissance" Grid.Row="5" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
             <DatePicker x:Name="I_DateNaissance" Grid.Row="5" Grid.Column="1" Width="auto" Height="30" Margin="10,5,10,0"/>
 
             <Button Content="Choisir une photo" Click="Button_ChoosePhoto_Click" Grid.Row="5" Grid.Column="2" Width="150" Height="30" Margin="10"/>
             <Image  x:Name="SelectedImage" Source="/IconeUtilisateurs.ico" Grid.Column="2" Grid.Row="2" Width="100" Height="100" Margin="25" Grid.RowSpan="2"/>
 
-            <TextBlock Text="Choisir un tournoi" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="10,20,10,5"/>
+            <Label Content="Choisir un tournoi" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="0,20,10,5" FontSize="16"/>
             <ListBox x:Name="Tournois" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Height="80" Width="400"/>
 
             <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">

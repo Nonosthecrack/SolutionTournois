@@ -40,6 +40,11 @@ namespace DllTournois
             return bdd.Tournois;
         }
 
+        public IQueryable <Gestionnairesappli> GetGestionnaire()
+        {
+            return bdd.Gestionnairesapplis;
+        }
+
         public IQueryable<Tournoi> GetTournoisBySportName(string sportName)
         {
             return bdd.Tournois.Where(t => t.Sport == this.GetSportByName(sportName).IdSport);
@@ -121,6 +126,12 @@ namespace DllTournois
         public void AddTournoi(Tournoi t)
         {
             bdd.Tournois.InsertOnSubmit(t);
+            bdd.SubmitChanges();
+        }
+
+        public void AddGestionnaire(Gestionnairesappli g)
+        {
+            bdd.Gestionnairesapplis.InsertOnSubmit(g);
             bdd.SubmitChanges();
         }
 

@@ -25,7 +25,6 @@ namespace AppTournoi
         public Window_Connection_Gestionnaire()
         {
             InitializeComponent();
-
             try
             {
                 bdd = new Bddtournois(
@@ -61,6 +60,7 @@ namespace AppTournoi
                     mainWindow.H_gestionSport.IsEnabled = true;
                     mainWindow.H_gestionTournois.IsEnabled = true;
                     mainWindow.H_bddConnexion.IsEnabled = false;
+                    mainWindow.H_gestionGestionnaire.IsEnabled = true;
                     this.Close();
                 }
             }
@@ -74,6 +74,20 @@ namespace AppTournoi
         {
             this.DialogResult = false;
             this.Close();
+        }
+
+        private void Button_gestionnaire(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Window_gestion_gestionnaire Win_ges = new Window_gestion_gestionnaire();
+                Win_ges.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur lors de l'ouverture du menu de connexion du Gestionnaire", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

@@ -1,0 +1,51 @@
+﻿<Window x:Class="AppTournoi.Window_gestion_gestionnaire"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppTournoi"
+        mc:Ignorable="d"
+        Title="Window_gestion_gestionnaire" Height="375" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="DarkSeaGreen">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" MaxHeight="150">
+            <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Margin="10, 10, 10, 30" AutoGenerateColumns="false"
+                        VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="login" Binding="{Binding Login}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
+            <Label Content="Nom du gestionnaire" FontWeight="Bold" FontSize="14"/>
+            <TextBox x:Name="Recherche" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" TextWrapping="Wrap" TextChanged="TextBox_TextChanged"/>
+        </StackPanel>
+
+        <Label Content="Ajouter un Gestionnaire" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" Margin="10,20,10,10" HorizontalAlignment="Center"/>
+
+        <Label Content="Login du gestionnaire" Grid.Row="2" Grid.Column="0" FontWeight="Bold" Margin="10,0,10,5"/>
+        <TextBox x:Name="I_login" Grid.Row="2" Grid.Column="1" Height="25" Margin="10,0,10,5" Padding="2.5"/>
+
+        <Label Content="Mot de passe du gestionnaire" Grid.Row="3" Grid.Column="0" FontWeight="Bold" Margin="10,0,10,5"/>
+        <PasswordBox x:Name="I_mdp" Grid.Row="3" Grid.Column="1" Height="25" Margin="10,0,10,5" Padding="2.5"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0">
+            <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
+            <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222" BorderThickness="0" Margin="10,0,0,0" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</Window>

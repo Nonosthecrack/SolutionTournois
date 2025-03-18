@@ -52,3 +52,14 @@ Z:\S4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.csproj.CoreCompil
 Z:\S4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.csproj.CopyComplete
 Z:\S4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.dll
 Z:\S4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.pdb
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\DllTournois.dll
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\DllTournois.pdb
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\Devart.Data.dll
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\Devart.Data.Linq.dll
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\Devart.Data.MySql.dll
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\bin\Debug\Devart.Data.MySql.Linq.dll
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.csproj.AssemblyReference.cache
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.csproj.CoreCompileInputs.cache
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.csproj.CopyComplete
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.dll
+D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\DllTournois\obj\Debug\DllTournois.pdb

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTournoi"
         mc:Ignorable="d"
-        Title="Holy Tournois management" Height="500" Width="1000" MinHeight="450" MinWidth="800">
+        Title="Holy Tournois management" Height="500" Width="1050" MinHeight="450" MinWidth="800">
     <Grid Background="DarkSeaGreen">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,6 +18,7 @@
             <MenuItem x:Name="H_gestionSport" IsEnabled="{Binding GesConnected}" Header="Gestions : Sports" Height="30" FontWeight="Black" Click="H_gestionSport_Click"/>
             <MenuItem x:Name="H_gestionTournois" IsEnabled="{Binding GesConnected}" Header="Gestion : Tournois" Height="30" FontWeight="Black" Click="H_gestionTournois_Click"/>
             <MenuItem x:Name="H_gestionParticipant" IsEnabled="{Binding GesConnected}" Header="Gestion : Participants" Height="30" FontWeight="Black" Click="H_gestionParticipant_Click"/>
+            <MenuItem x:Name="H_gestionGestionnaire" IsEnabled="{Binding GesConnected}" Header="Gestion : Gestionnaire" Height="30" FontWeight="Black" Click="H_gestionGestionnaire_Click"/>
             <MenuItem x:Name="H_gestionnaire" Header="Gestionnaire" Click="H_gestionnaire_Click" Height="30" FontWeight="Black"/>
             <MenuItem x:Name="H_parametres" Header="Paramètres BDD" Click="H_bddParam_Click" Height="30" FontWeight="Black"/>
         </Menu>
