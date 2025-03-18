@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Ajout d'un nouveau tournoi" Height="600" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Ajout d'un nouveau tournoi" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="DarkSeaGreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -20,15 +20,17 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Grid.Row="0" Grid.Column="0" Margin="10" AutoGenerateColumns="false"
+        <Grid Grid.Row="0" Grid.Column="0" MaxHeight="150">
+            <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Margin="10, 10, 10, 30" AutoGenerateColumns="false"
                    VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding IdTournoi}"/>
-                <DataGridTextColumn Header="Intitule" Binding="{Binding Intitule}"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding DateTournoi}"/>
-                <DataGridTextColumn Header="Id Sport" Binding="{Binding Sport}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding IdTournoi}"/>
+                    <DataGridTextColumn Header="Intitule" Binding="{Binding Intitule}"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding DateTournoi}"/>
+                    <DataGridTextColumn Header="Id Sport" Binding="{Binding Sport}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="10" Orientation="Vertical">
             <Label Content="Nom du tournoi" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>

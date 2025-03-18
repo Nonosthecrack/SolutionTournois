@@ -43,15 +43,15 @@ namespace AppTournoi
         }
         private void Button_save(object sender, RoutedEventArgs e)
         {
-
-            Properties.Settings.Default.GesConnected = bdd.verifyLogin(this.G_Login.Text.ToString(), this.G_Password.Password.ToString()); //base de sonnée = ce qu'on rentre dans les champs
-            if(Properties.Settings.Default.GesConnected)
+            Properties.Settings.Default.GesConnected = bdd.verifyLogin(this.G_Login.Text.ToString(), this.G_Password.Password.ToString());
+            if (Properties.Settings.Default.GesConnected)
             {
                 MessageBox.Show("Connexion réussie");
                 MainWindow mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
                 if (mainWindow != null)
                 {
+                    mainWindow.bdd = this.bdd;
                     mainWindow.L_Sports.Items.Clear();
                     foreach (Sport sport in bdd.GetSport())
                     {
@@ -63,11 +63,10 @@ namespace AppTournoi
                     mainWindow.H_bddConnexion.IsEnabled = false;
                     this.Close();
                 }
-
             }
             else
             {
-                MessageBox.Show("Login ou mote de passe incorecte incorrect", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Login ou mot de passe incorrect", "Champ vide", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

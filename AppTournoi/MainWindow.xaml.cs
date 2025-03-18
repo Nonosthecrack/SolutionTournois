@@ -23,7 +23,7 @@ namespace AppTournoi
     public partial class MainWindow : Window
     {
 
-        private Bddtournois bdd = null;
+        public Bddtournois bdd = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -81,6 +81,7 @@ namespace AppTournoi
 
             try
             {
+                L_Sports.Items.Clear();
                 foreach (Sport sport in bdd.GetSport())
                 {
                     this.L_Sports.Items.Add(sport.Intitule);
@@ -201,5 +202,6 @@ namespace AppTournoi
                 });
             }
         }
+
     }
 }
