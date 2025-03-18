@@ -135,6 +135,30 @@ namespace DllTournois
             bdd.SubmitChanges();
         }
 
+        public void RemoveParticipant(Participant participant)
+        {
+            bdd.Participants.DeleteOnSubmit(participant);
+            bdd.SubmitChanges();
+        }
+
+        public void RemoveTournoi(Tournoi t)
+        {
+            bdd.Tournois.DeleteOnSubmit(t);
+            bdd.SubmitChanges();
+        }
+
+        public void RemoveSport(Sport s)
+        {
+            bdd.Sports.DeleteOnSubmit(s);
+            bdd.SubmitChanges();
+        }
+
+        public void RemoveGestionnaire(Gestionnairesappli g)
+        {
+            bdd.Gestionnairesapplis.DeleteOnSubmit(g);
+            bdd.SubmitChanges();
+        }
+
     }
 
 }

@@ -77,6 +77,12 @@
     <Compile Include="Window_liste_participants.xaml.cs">
       <DependentUpon>Window_liste_participants.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window_modif_gestionnaire.xaml.cs">
+      <DependentUpon>Window_modif_gestionnaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_modif_participant.xaml.cs">
+      <DependentUpon>Window_modif_participant.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +120,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window_liste_participants.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_modif_gestionnaire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_modif_participant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

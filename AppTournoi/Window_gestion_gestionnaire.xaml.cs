@@ -59,6 +59,24 @@ namespace AppTournoi
             return true;
         }
 
+        private void MenuItem_Modifier_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedTournoi = Liste.SelectedItem as Tournoi;
+            if (selectedTournoi != null)
+            {
+                //TODO
+            }
+        }
+        private void MenuItem_Supprimer_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedgest = Liste.SelectedItem as Gestionnairesappli;
+            if (selectedgest != null)
+            {
+                bdd.RemoveGestionnaire(selectedgest);
+                this.Liste.ItemsSource = bdd.GetGestionnaire().ToList();
+            }
+        }
+
         private void Button_quit(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;

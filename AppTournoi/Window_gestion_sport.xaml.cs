@@ -66,6 +66,32 @@ namespace AppTournoi
                 }
         }
 
+        private void MenuItem_Modifier_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedTournoi = Liste.SelectedItem as Tournoi;
+            if (selectedTournoi != null)
+            {
+                //TODO
+            }
+        }
+
+        private void MenuItem_Supprimer_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var selectedSport = Liste.SelectedItem as Sport;
+                if (selectedSport != null)
+                {
+                    bdd.RemoveSport(selectedSport);
+                    this.Liste.ItemsSource = bdd.GetSport().ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Vous ne pouvez pas supprimer ce sport car des tournois de celui-ci sont organisés", "Suppression impossible");
+            }
+        }
+
         private void Button_quit(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;

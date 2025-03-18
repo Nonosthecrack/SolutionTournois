@@ -24,6 +24,12 @@
         <Grid Grid.Row="0" Grid.Column="0" MaxHeight="150">
             <DataGrid x:Name="Liste" d:ItemsSource="{Binding}" Margin="10, 10, 10, 30" AutoGenerateColumns="false"
                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Modifier" Click="MenuItem_Modifier_Click"/>
+                        <MenuItem Header="Supprimer" Click="MenuItem_Supprimer_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="login" Binding="{Binding Login}"/>
                 </DataGrid.Columns>

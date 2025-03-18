@@ -135,6 +135,30 @@ namespace AppTournoi
             return data;
         }
 
+        private void MenuItem_Modifier_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedParticipant = Liste.SelectedItem as Tournoi;
+            if (selectedParticipant != null)
+            {
+                //TODO
+            }
+        }
+
+        private void MenuItem_Supprimer_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var selectedParticipant = Liste.SelectedItem as Participant;
+                if (selectedParticipant != null)
+                {
+                    bdd.RemoveParticipant(selectedParticipant);
+                    this.Liste.ItemsSource = bdd.GetParticipant().ToList();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur de suppression");
+            }
+        }
 
         private void Button_quit(object sender, RoutedEventArgs e)
         {
