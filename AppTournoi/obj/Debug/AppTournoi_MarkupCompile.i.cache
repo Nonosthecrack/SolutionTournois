@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\BUT_INFO_1\Semestre4\R4.01\SolutionTournois\AppTournoi\App.xaml
-10518150482
+8262510815
 
-15-545360594
+13-923565611
 151235531813
-MainWindow.xaml;Window_connection_gestionnaire.xaml;Window_connection_bdd.xaml;Window_gestion_gestionnaire.xaml;Window_gestion_participant.xaml;Window_gestion_sport.xaml;Window_gestion_tournoi.xaml;Window_liste_participants.xaml;Window_modif_gestionnaire.xaml;Window_modif_participant.xaml;
+MainWindow.xaml;Window_connection_gestionnaire.xaml;Window_connection_bdd.xaml;Window_gestion_gestionnaire.xaml;Window_gestion_participant.xaml;Window_gestion_sport.xaml;Window_gestion_tournoi.xaml;Window_liste_participants.xaml;
 
-True
+False
 

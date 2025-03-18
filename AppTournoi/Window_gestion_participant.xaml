@@ -77,7 +77,7 @@
             <ListBox x:Name="Tournois" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Height="80" Width="400"/>
 
             <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Margin="10" Cursor="Hand"/>
+                <Button x:Name="Ajouter" Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Margin="10" Cursor="Hand"/>
                 <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222" BorderThickness="0" Margin="10" Cursor="Hand"/>
             </StackPanel>
         </Grid>

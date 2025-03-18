@@ -159,6 +159,75 @@ namespace DllTournois
             bdd.SubmitChanges();
         }
 
+        public void ModifSport(Sport s)
+        {
+            var existingSport = bdd.Sports.SingleOrDefault(sp => sp.IdSport == s.IdSport);
+
+            if (existingSport != null)
+            {
+                existingSport.Intitule = s.Intitule;
+                bdd.SubmitChanges();
+            }
+            else
+            {
+                throw new Exception("Le sport à modifier n'existe pas dans la base de données.");
+            }
+        }
+
+        public void ModifTournoi(Tournoi t)
+        {
+            var existingTournoi = bdd.Tournois.SingleOrDefault(tp => tp.IdTournoi == t.IdTournoi);
+
+            if (existingTournoi != null)
+            {
+                existingTournoi.Intitule = t.Intitule;
+                existingTournoi.DateTournoi = t.DateTournoi;
+                existingTournoi.Sport = t.Sport;
+                bdd.SubmitChanges();
+            }
+            else
+            {
+                throw new Exception("Le tournoi à modifier n'existe pas dans la base de données.");
+            }
+        }
+
+        public void ModifParticipant(Participant p)
+        {
+            var existingParticipant = bdd.Participants.SingleOrDefault(tp => tp.Id == p.Id);
+
+            if (existingParticipant != null)
+            {
+                existingParticipant.Nom = p.Nom;
+                existingParticipant.Prenom = p.Prenom;
+                existingParticipant.DateNaissance = p.DateNaissance;
+                existingParticipant.Sexe = p.Sexe;
+                existingParticipant.Photo = p.Photo;
+                existingParticipant.Tournoi = p.Tournoi;
+                bdd.SubmitChanges();
+            }
+            else
+            {
+                throw new Exception("Le Participant à modifier n'existe pas dans la base de données.");
+            }
+        }
+
+        public void ModifGestionnaire(Gestionnairesappli g)
+        {
+            var existingGestionnaire = bdd.Gestionnairesapplis.SingleOrDefault(tp => tp.Login == g.Login);
+
+            if(existingGestionnaire != null)
+            {
+                existingGestionnaire.Login = g.Login;
+                existingGestionnaire.MotDpass = g.MotDpass;
+                bdd.SubmitChanges();
+            }
+            else
+            {
+                throw new Exception("Le gestionnaire à modifier n'existe pas dans la base de données.");
+            }
+
+        }
+
     }
 
 }

@@ -61,10 +61,12 @@ namespace AppTournoi
 
         private void MenuItem_Modifier_Click(object sender, RoutedEventArgs e)
         {
-            var selectedTournoi = Liste.SelectedItem as Tournoi;
-            if (selectedTournoi != null)
+            var selectedGestionnaire = Liste.SelectedItem as Gestionnairesappli;
+            if (selectedGestionnaire != null)
             {
-                //TODO
+                I_login.Text = selectedGestionnaire.Login;
+                I_mdp.Password = selectedGestionnaire.MotDpass;
+                Ajouter.Content = "Enregistrer";
             }
         }
         private void MenuItem_Supprimer_Click(object sender, RoutedEventArgs e)
@@ -87,12 +89,32 @@ namespace AppTournoi
         {
             if (ValidateFiels())
             {
-                Gestionnairesappli g = new Gestionnairesappli
+                if(Ajouter.Content.ToString() == "Ajouter")
                 {
-                    Login = this.I_login.Text,
-                    MotDpass = this.I_mdp.Password,
-                };
-                bdd.AddGestionnaire(g);
+                    Gestionnairesappli g = new Gestionnairesappli
+                    {
+                        Login = this.I_login.Text,
+                        MotDpass = this.I_mdp.Password,
+                    };
+                    bdd.AddGestionnaire(g);
+                } else
+                {
+                    var selectedGestionnaire = Liste.SelectedItem as Gestionnairesappli;
+                    if (selectedGestionnaire != null)
+                    {
+                        selectedGestionnaire.Login = this.I_login.Text;
+                        selectedGestionnaire.MotDpass = this.I_mdp.Password;
+                        if (bdd.GetGestionnaire().ToList().Contains(selectedGestionnaire))
+                        {
+                            MessageBox.Show("Un gestionnaire avec le login et le mdp similaire existe déja", "Erreur de modification");
+                        }
+                        else
+                        {
+                            bdd.ModifGestionnaire(selectedGestionnaire);
+                        }
+                        
+                    }
+                }
                 this.Close();
             }
         }

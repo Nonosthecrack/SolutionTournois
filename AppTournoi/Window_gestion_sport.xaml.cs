@@ -56,22 +56,44 @@ namespace AppTournoi
         {
             if (ValidateFiels())
             {
-                Sport s = new Sport
+                if (Ajouter.Content.ToString() == "Ajouter")
+                {
+                    Sport s = new Sport
                     {
                         Intitule = this.I_Sport.Text
                     };
                     bdd.AddSport(s);
                     SportAdded?.Invoke(this, EventArgs.Empty);
-                    this.Close();
                 }
+                else
+                {
+                    var selectedSport = Liste.SelectedItem as Sport;
+                    if (selectedSport != null)
+                    {
+                        selectedSport.Intitule = this.I_Sport.Text;
+                        if (bdd.GetSport().ToList().Contains(selectedSport))
+                        {
+                            MessageBox.Show("Un sport similaire existe déja", "Erreur de modification");
+                        }
+                        else
+                        {
+                            bdd.ModifSport(selectedSport);
+                        }
+                        SportAdded?.Invoke(this, EventArgs.Empty);
+                    }
+                }
+                this.Close();
+            }
         }
 
         private void MenuItem_Modifier_Click(object sender, RoutedEventArgs e)
         {
-            var selectedTournoi = Liste.SelectedItem as Tournoi;
-            if (selectedTournoi != null)
+            var selectedSport = Liste.SelectedItem as Sport;
+            if (selectedSport != null)
             {
-                //TODO
+                I_Sport.Text = selectedSport.Intitule;
+                Ajouter.Content = "Enregistrer";
+                
             }
         }
 

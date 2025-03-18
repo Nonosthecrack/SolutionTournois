@@ -72,13 +72,32 @@ namespace AppTournoi
          {
              if (ValidateFiels())
              {
-                 Tournoi t = new Tournoi
-                 {
-                     Intitule = this.I_intitule.Text,
-                     DateTournoi = this.I_Date.SelectedDate.Value,
-                     Sport = bdd.GetSportByName(Sports.SelectedItem.ToString()).IdSport
-                 };
-                 bdd.AddTournoi(t);
+                if(Ajouter.Content.ToString() == "Ajouter")
+                {
+                    Tournoi t = new Tournoi
+                    {
+                        Intitule = this.I_intitule.Text,
+                        DateTournoi = this.I_Date.SelectedDate.Value,
+                        Sport = bdd.GetSportByName(Sports.SelectedItem.ToString()).IdSport
+                    };
+                    bdd.AddTournoi(t);
+                }
+                else
+                {
+                    var selectedTournoi = Liste.SelectedItem as Tournoi;
+                    if(selectedTournoi != null)
+                    {
+                        selectedTournoi.Intitule = this.I_intitule.Text;
+                        if (bdd.GetTournois().ToList().Contains(selectedTournoi))
+                        {
+                            MessageBox.Show("Un tournoi avec des informations similaires existe déja", "Erreur de modification");
+                        }
+                        else
+                        {
+                            bdd.ModifTournoi(selectedTournoi);
+                        }
+                    }
+                }
                  this.Close();
              }
          }
@@ -88,8 +107,13 @@ namespace AppTournoi
             var selectedTournoi = Liste.SelectedItem as Tournoi; 
             if (selectedTournoi != null)
             {
-                //TODO
+                I_intitule.Text = selectedTournoi.Intitule;
+                I_Date.SelectedDate = selectedTournoi.DateTournoi;
+                Sports.SelectedItem = selectedTournoi.Sport;
+                Ajouter.Content = "Enregistrer";
             }
+
+
         }
 
         private void MenuItem_Supprimer_Click(object sender, RoutedEventArgs e)

@@ -83,30 +83,57 @@ namespace AppTournoi
         {
             if (ValidateFields())
             {
-                string selectedItemText = Tournois.SelectedItem.ToString();
-                string selectedTournoiName = selectedItemText.Split(';')[0];
-                var selectedTournoi = bdd.GetTournoiByName(selectedTournoiName);
+                if (Ajouter.Content.ToString() == "Ajouter")
+                {
+                    string selectedItemText = Tournois.SelectedItem.ToString();
+                    string selectedTournoiName = selectedItemText.Split(';')[0];
+                    var selectedTournoi = bdd.GetTournoiByName(selectedTournoiName);
 
-                Participant p = new Participant
-                {
-                    DateNaissance = this.I_DateNaissance.SelectedDate.Value,
-                    Nom = this.I_Nom.Text,
-                    Prenom = this.I_Prenom.Text,
-                    Sexe = this.I_Sexe.Text,
-                    Tournoi = selectedTournoi.IdTournoi,
-                    //Photo = ImageToByteArray((BitmapImage)SelectedImage.Source)
-                };
-                if (SelectedImage.Source != null)
-                {
-                    p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
+                    Participant p = new Participant
+                    {
+                        DateNaissance = this.I_DateNaissance.SelectedDate.Value,
+                        Nom = this.I_Nom.Text,
+                        Prenom = this.I_Prenom.Text,
+                        Sexe = this.I_Sexe.Text,
+                        Tournoi = selectedTournoi.IdTournoi,
+                        //Photo = ImageToByteArray((BitmapImage)SelectedImage.Source)
+                    };
+                    if (SelectedImage.Source != null)
+                    {
+                        p.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
+                    }
+                    else
+                    {
+                        p.Photo = null;
+                    }
+                    bdd.AddParticipant(p);
                 }
                 else
                 {
-                    p.Photo = null; 
+                    var selectedParticipant = Liste.SelectedItem as Participant;
+                    if (selectedParticipant != null)
+                    {
+                        selectedParticipant.Nom = this.I_Nom.Text;
+                        selectedParticipant.Prenom = this.I_Prenom.Text;
+                        selectedParticipant.DateNaissance = this.I_DateNaissance.SelectedDate.Value;
+                        selectedParticipant.Sexe = this.I_Sexe.Text;
+                        if (SelectedImage.Source != null)
+                        {
+                            selectedParticipant.Photo = ImageToByteArray((BitmapImage)SelectedImage.Source);
+                        }
+
+                        if (bdd.GetParticipant().ToList().Contains(selectedParticipant))
+                        {
+                            MessageBox.Show("Un participant avec une ou plusieurs informations similaires existe déja", "Erreur de modification");
+                        }
+                        else
+                        {
+                            bdd.ModifParticipant(selectedParticipant);
+                        }
+                    }
+                    this.Close();
                 }
-                bdd.AddParticipant(p);
-                this.Close();
-                }
+            }
         }
 
         private void Button_ChoosePhoto_Click(object sender, RoutedEventArgs e)
@@ -135,14 +162,51 @@ namespace AppTournoi
             return data;
         }
 
-        private void MenuItem_Modifier_Click(object sender, RoutedEventArgs e)
+        private BitmapImage ByteArrayToImage(byte[] byteArray)
         {
-            var selectedParticipant = Liste.SelectedItem as Tournoi;
-            if (selectedParticipant != null)
+            if (byteArray == null || byteArray.Length == 0) return null;
+
+            using (var ms = new MemoryStream(byteArray))
             {
-                //TODO
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
             }
         }
+
+
+        private void MenuItem_Modifier_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedParticipant = Liste.SelectedItem as Participant;
+            if (selectedParticipant != null)
+            {
+                I_Prenom.Text = selectedParticipant.Prenom;
+                I_Nom.Text = selectedParticipant.Nom;
+                I_DateNaissance.SelectedDate = selectedParticipant.DateNaissance;
+                I_Sexe.Text = selectedParticipant.Sexe;
+
+                if (selectedParticipant.Photo != null)
+                {
+                    SelectedImage.Source = ByteArrayToImage(selectedParticipant.Photo);
+                }
+                else
+                {
+                    SelectedImage.Source = null;
+                }
+
+                var tournoiItem = bdd.GetTournoiById(selectedParticipant.Tournoi);
+                if (tournoiItem != null)
+                {
+                    Tournois.SelectedItem = $"{tournoiItem.Intitule};{tournoiItem.DateTournoi}";
+                }
+
+                Ajouter.Content = "Enregistrer";
+            }
+        }
+
 
         private void MenuItem_Supprimer_Click(object sender, RoutedEventArgs e)
         {

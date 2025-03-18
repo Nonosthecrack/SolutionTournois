@@ -44,7 +44,7 @@
             <TextBox x:Name="I_Sport"  Grid.Row="2" Grid.Column="1" Width="auto" Height="30" Margin="10" Padding="5"/>
 
             <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0">
-                <Button Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
+                <Button x:Name="Ajouter" Content="Ajouter" Width="165" Height="40" Click="Button_save" FontSize="16" FontWeight="Bold" Background="#4682B4" BorderThickness="0" Cursor="Hand"/>
                 <Button Content="Annuler" Width="165" Height="40" Click="Button_quit" FontSize="16" FontWeight="Bold" Background="#B22222" BorderThickness="0" Margin="10,0,0,0" Cursor="Hand"/>
             </StackPanel>
         </Grid>
